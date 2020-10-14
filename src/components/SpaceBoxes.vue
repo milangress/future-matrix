@@ -1,6 +1,6 @@
 <template lang="pug">
   a-entity(:rotation="rotation")
-    a-box(v-on:mouseenter="boxHover" position='5 5 5' depth="9" height="9" width="9" mixin="SpaceBox")
+    a-box(position='5 5 5' depth="9" height="9" width="9" mixin="SpaceBox")
     a-box(position='-5 5 5' depth="9" height="9" width="9" mixin="SpaceBox")
     a-box(position='-5 -5 5' depth="9" height="9" width="9" mixin="SpaceBox")
     a-box(position='-5 -5 -5' depth="9" height="9" width="9" mixin="SpaceBox")
