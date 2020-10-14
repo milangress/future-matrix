@@ -9,7 +9,9 @@
         a-entity(position="11 0 0" rotation='-45 0 -90' text="anchor: center; align: center; width: 10; side: double; wrapCount: 20; color: black; value: Touching;")
         a-entity(position="-11 0 0" rotation='-45 0 -90' text="anchor: center; align: center; width: 10; side: double; wrapCount: 20; color: black; value: Swiping;")
       a-sky(color='#ECECEC')
+      a-sphere#point(v-on:click="newRandomPoint" position="0 0 0" color="yellow" radius="0.5")
       a-entity(camera="fov: 30" look-controls orbit-controls="target: 0 0 0; minDistance: 0.5; maxDistance: 180; initialPosition: 30 15 45")
+      a-entity(cursor='rayOrigin: mouse')
 </template>
 
 <script>
@@ -23,6 +25,18 @@ export default {
   components: {
     HorizontalAxis,
     VerticalAxis
+  },
+  data () {
+    return {
+      worldRotation: 0
+    }
+  },
+  methods: {
+    newRandomPoint: function (event) {
+      console.log(event.target)
+      const point = document.querySelector('#point')
+      point.setAttribute('position', `${Math.random() * 20 - 10} ${Math.random() * 20 - 10} ${Math.random() * 20 - 10}`)
+    }
   }
 }
 </script>
