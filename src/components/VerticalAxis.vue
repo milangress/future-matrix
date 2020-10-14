@@ -1,6 +1,8 @@
 <template lang="pug">
   a-entity(:rotation="rotation")
     a-box(position='0 0 0' depth="0.1" height="0.1" width="20" color='#9e4cd9')
+    a-cone(position="10 0 0" rotation="0 0 -90" radius-bottom="0.4" radius-top="0" color='#9e4cd9')
+    a-cone(position="-10 0 0" rotation="0 0 90" radius-bottom="0.4" radius-top="0" color='#9e4cd9')
     a-entity(position="11 0 0" rotation="-45 0 -90" v-bind:text="leftTextObject")
     a-entity(position="-11 0 0" rotation="-45 0 -90" v-bind:text="rightTextObject")
     a-entity(position="11 0 0" rotation="135 0 -90" v-bind:text="leftTextObject")
