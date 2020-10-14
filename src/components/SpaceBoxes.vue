@@ -1,5 +1,5 @@
 <template lang="pug">
-  a-entity(:rotation="rotation")
+  a-entity
     a-box(position='5 5 5' depth="9.5" height="9.5" width="9.5" mixin="SpaceBox")
     a-box(position='-5 5 5' depth="9.5" height="9.5" width="9.5" mixin="SpaceBox")
     a-box(position='-5 -5 5' depth="9.5" height="9.5" width="9.5" mixin="SpaceBox")
