@@ -3,7 +3,8 @@
     a-scene
       horizontal-axis(leftTxt="Nature over Human" rightTxt="Human over Nature")
       horizontal-axis(rotation="0 90 0" leftTxt="Offen" rightTxt="Geschlossen")
-      a-entity(rotation='0 90 90')
+      vertical-axis(leftTxt="Touching" rightTxt="Swiping")
+      // a-entity(rotation='0 90 90')
         a-box(position='0 0 0' rotation='0 90 0' depth="20" height="0.1" width="0.1" color='#9E4CD9')
         a-entity(position="11 0 0" rotation='-45 0 -90' text="anchor: center; align: center; width: 10; side: double; wrapCount: 20; color: black; value: Touching;")
         a-entity(position="-11 0 0" rotation='-45 0 -90' text="anchor: center; align: center; width: 10; side: double; wrapCount: 20; color: black; value: Swiping;")
@@ -15,11 +16,13 @@
 // @ is an alias to /src
 // import HelloWorld from '@/components/HelloWorld.vue'
 import HorizontalAxis from '@/components/HorizontalAxis'
+import VerticalAxis from '@/components/VerticalAxis'
 
 export default {
   name: 'Home',
   components: {
-    HorizontalAxis
+    HorizontalAxis,
+    VerticalAxis
   }
 }
 </script>
