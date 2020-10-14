@@ -1,6 +1,6 @@
 <template lang="pug">
   .home
-    a-scene
+    a-scene(vr-mode-ui="enabled: false")
       a-assets
         a-mixin(id="SpaceBox"
           material="shader: flat; side: double; depthTest: false; color: white; transparent: true; opacity: 0.03"
