@@ -1,13 +1,15 @@
 <template lang="pug">
   .home
     a-scene
+      a-assets
+        a-mixin(id="SpaceBox"
+          material="shader: flat; side: double; depthTest: false; color: white; transparent: true; opacity: 0.03"
+          animation__mouseenter="property: components.material.material.color; type: color; to: black; startEvents: mouseenter; dur: 200"
+          animation__mouseleave="property: components.material.material.color; type: color; to: white; startEvents: mouseleave; dur: 200")
       horizontal-axis(leftTxt="Nature over Human" rightTxt="Human over Nature")
       horizontal-axis(rotation="0 90 0" leftTxt="Offen" rightTxt="Geschlossen")
       vertical-axis(leftTxt="Touching" rightTxt="Swiping")
-      // a-entity(rotation='0 90 90')
-        a-box(position='0 0 0' rotation='0 90 0' depth="20" height="0.1" width="0.1" color='#9E4CD9')
-        a-entity(position="11 0 0" rotation='-45 0 -90' text="anchor: center; align: center; width: 10; side: double; wrapCount: 20; color: black; value: Touching;")
-        a-entity(position="-11 0 0" rotation='-45 0 -90' text="anchor: center; align: center; width: 10; side: double; wrapCount: 20; color: black; value: Swiping;")
+      SpaceBoxes
       a-sky(color='#ECECEC')
       a-sphere#point(v-on:click="newRandomPoint" position="0 0 0" color="yellow" radius="0.5")
       a-entity(camera="fov: 30" look-controls orbit-controls="target: 0 0 0; minDistance: 0.5; maxDistance: 180; initialPosition: 30 15 45")
@@ -19,12 +21,14 @@
 // import HelloWorld from '@/components/HelloWorld.vue'
 import HorizontalAxis from '@/components/HorizontalAxis'
 import VerticalAxis from '@/components/VerticalAxis'
+import SpaceBoxes from '@/components/SpaceBoxes'
 
 export default {
   name: 'Home',
   components: {
     HorizontalAxis,
-    VerticalAxis
+    VerticalAxis,
+    SpaceBoxes
   },
   data () {
     return {
