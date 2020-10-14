@@ -1,3 +1,4 @@
+/*jshint -W109 */
 <template lang="pug">
   .home
     .aframe-matrix
@@ -42,7 +43,9 @@ export default {
     newRandomPoint: function (event) {
       console.log(event.target)
       const point = document.querySelector('#point')
-      point.setAttribute('position', `${Math.random() * 20 - 10} ${Math.random() * 20 - 10} ${Math.random() * 20 - 10}`)
+      const randomPoint = `${Math.random() * 20 - 10} ${Math.random() * 20 - 10} ${Math.random() * 20 - 10}`
+      point.setAttribute('animation', `property: position; to: ${randomPoint}; dur: 500; easing: easeInOutQuad; loop: false`)
+      // point.setAttribute('position', `${Math.random() * 20 - 10} ${Math.random() * 20 - 10} ${Math.random() * 20 - 10}`)
     }
   }
 }
