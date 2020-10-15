@@ -5,14 +5,14 @@
       a-scene(embedded vr-mode-ui="enabled: false")
         a-assets
           a-mixin(id="SpaceBox"
-            material="shader: flat; side: double; depthTest: false; color: white; transparent: true; opacity: 0.03"
-            animation__mouseenter="property: components.material.material.color; type: color; to: black; startEvents: mouseenter; dur: 200"
-            animation__mouseleave="property: components.material.material.color; type: color; to: white; startEvents: mouseleave; dur: 200")
+            material="shader: flat; side: double; depthTest: false; color: #726042; transparent: true; opacity: 0.03"
+            animation__mouseenter="property: components.material.material.color; type: color; to: white; startEvents: mouseenter; dur: 200"
+            animation__mouseleave="property: components.material.material.color; type: color; to: #726042; startEvents: mouseleave; dur: 200")
         horizontal-axis(leftTxt="Natur über Mensch" rightTxt="Mensch über Natur")
         horizontal-axis(rotation="0 90 0" leftTxt="Offen" rightTxt="Geschlossen")
         vertical-axis(leftTxt="Touching" rightTxt="Swiping")
         SpaceBoxes
-        // a-sky(color='#ECECEC')
+        a-sky(color='#726042')
         a-sphere#point(v-on:click="newRandomPoint" position="0 0 0" color="yellow" radius="0.5")
         a-entity(camera="fov: 30" look-controls orbit-controls="target: 0 0 0; minDistance: 0.5; maxDistance: 180; initialPosition: 30 15 45")
         a-entity(cursor='rayOrigin: mouse')
@@ -66,5 +66,5 @@ export default {
   width 4rem
   height 10rem
   border-radius 1rem
-  background linear-gradient(90deg, rgba(9,9,121,1) 0%, rgba(0,212,255,0) 100%)
+  background linear-gradient(90deg, #ad6bd0 0%, rgba(0,212,255,0) 100%)
 </style>
