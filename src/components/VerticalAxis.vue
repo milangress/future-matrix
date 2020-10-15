@@ -16,7 +16,10 @@ const mainTextObject = {
   wrapCount: '20',
   color: 'black',
   anchor: 'center',
-  align: 'center'
+  align: 'center',
+  font: '/oracle-msdf.json',
+  'font-image': '/oracle-msdf.png',
+  negate: 'false'
 }
 
 export default {

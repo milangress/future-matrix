@@ -8,7 +8,7 @@
             material="shader: flat; side: double; depthTest: false; color: white; transparent: true; opacity: 0.03"
             animation__mouseenter="property: components.material.material.color; type: color; to: black; startEvents: mouseenter; dur: 200"
             animation__mouseleave="property: components.material.material.color; type: color; to: white; startEvents: mouseleave; dur: 200")
-        horizontal-axis(leftTxt="Natur ueber Mensch" rightTxt="Mensch ueber Natur")
+        horizontal-axis(leftTxt="Natur über Mensch" rightTxt="Mensch über Natur")
         horizontal-axis(rotation="0 90 0" leftTxt="Offen" rightTxt="Geschlossen")
         vertical-axis(leftTxt="Touching" rightTxt="Swiping")
         SpaceBoxes
