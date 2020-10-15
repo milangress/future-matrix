@@ -57,14 +57,20 @@ export default {
   height: 100vh
 .interface
   top 0px
-  margin 1rem
+  width 100%
+  height 100%
   position fixed
-  z-index 1000000
+  z-index 1000
+  display grid
+  grid-template-columns: 2rem repeat(18, 1fr) 2rem
+  grid-template-rows: 2rem repeat(10, 1fr) 2rem
+  pointer-events none
 .btn
   cursor pointer
+  pointer-events all
 .newPoint
-  width 4rem
-  height 10rem
+  grid-column: 2 / span 1
+  grid-row: 2 / 5
   border-radius 1rem
   background linear-gradient(90deg, #ad6bd0 0%, rgba(0,212,255,0) 100%)
 </style>
