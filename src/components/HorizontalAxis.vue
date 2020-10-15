@@ -29,25 +29,35 @@ export default {
   },
   data () {
     return {
-      leftTextObject: {
+    }
+  },
+  computed: {
+    leftTextObject: function () {
+      return {
         ...mainTextObject,
         anchor: 'left',
         align: 'left',
         value: this.leftTxt
-      },
-      leftBackTextObject: {
+      }
+    },
+    leftBackTextObject: function () {
+      return {
         ...mainTextObject,
         anchor: 'right',
         align: 'right',
         value: this.leftTxt
-      },
-      rightTextObject: {
+      }
+    },
+    rightTextObject: function () {
+      return {
         ...mainTextObject,
         anchor: 'right',
         align: 'right',
         value: this.rightTxt
-      },
-      rightBackTextObject: {
+      }
+    },
+    rightBackTextObject: function () {
+      return {
         ...mainTextObject,
         anchor: 'left',
         align: 'left',

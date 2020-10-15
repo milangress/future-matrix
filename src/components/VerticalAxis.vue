@@ -7,6 +7,7 @@
     a-entity(position="-11 0 0" rotation="-45 0 -90" v-bind:text="rightTextObject")
     a-entity(position="11 0 0" rotation="135 0 -90" v-bind:text="leftTextObject")
     a-entity(position="-11 0 0" rotation="135 0 -90" v-bind:text="rightTextObject")
+    // a-text(position="2 2 2" rotation="0 0 0" v-bind:value="zAxis[0]")
 </template>
 
 <script>
@@ -33,12 +34,17 @@ export default {
     }
   },
   data () {
-    return {
-      leftTextObject: {
+    return {}
+  },
+  computed: {
+    leftTextObject: function () {
+      return {
         ...mainTextObject,
         value: this.leftTxt
-      },
-      rightTextObject: {
+      }
+    },
+    rightTextObject: function () {
+      return {
         ...mainTextObject,
         value: this.rightTxt
       }

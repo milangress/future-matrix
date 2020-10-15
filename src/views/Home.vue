@@ -8,24 +8,32 @@
             material="shader: flat; side: double; depthTest: false; color: #726042; transparent: true; opacity: 0.03"
             animation__mouseenter="property: components.material.material.color; type: color; to: white; startEvents: mouseenter; dur: 200"
             animation__mouseleave="property: components.material.material.color; type: color; to: #726042; startEvents: mouseleave; dur: 200")
-        horizontal-axis(leftTxt="Natur über Mensch" rightTxt="Mensch über Natur")
-        horizontal-axis(rotation="0 90 0" leftTxt="Offen" rightTxt="Geschlossen")
-        vertical-axis(leftTxt="Touching" rightTxt="Swiping")
+        horizontal-axis(:leftTxt="xAxis[0]" :rightTxt="xAxis[1]" :barColor="barColor")
+        horizontal-axis(rotation="0 90 0" :leftTxt="yAxis[0]" :rightTxt="yAxis[1]" :barColor="barColor")
+        vertical-axis(:leftTxt="zAxis[0]" :rightTxt="zAxis[1]")
         SpaceBoxes
         a-sky(color='#726042')
-        a-sphere#point(v-on:click="newRandomPoint" position="0 0 0" color="yellow" radius="0.5")
+        a-entity#point
+          a-entity(light="color: #blue; intensity: 2.8; type: point; distance: 40; decay: 5" position="0 0 0")
+          a-sphere#point(v-on:click="newRandomPoint" position="0 0 0" color="blue" radius="0.5")
+        a-entity(light="type: ambient; color: #BBB")
+        a-entity(light="type: directional; color: #FFF; intensity: 0.6" position="-0.5 1 1")
         a-entity(camera="fov: 30" look-controls orbit-controls="target: 0 0 0; minDistance: 0.5; maxDistance: 180; initialPosition: 30 15 45: dampingFactor: 0.3")
         a-entity(cursor='rayOrigin: mouse')
     .interface
       div.newPoint.btn(v-on:click="newRandomPoint")
+      div.newWords.btn(v-on:click="newWordPairs")
 </template>
 
 <script>
 // @ is an alias to /src
 // import HelloWorld from '@/components/HelloWorld.vue'
+// import Vue from 'vue'
 import HorizontalAxis from '@/components/HorizontalAxis'
 import VerticalAxis from '@/components/VerticalAxis'
 import SpaceBoxes from '@/components/SpaceBoxes'
+
+const sheetURL = 'https://spreadsheets.google.com/feeds/cells/1LwSUWGNRwzb_5nKIQfBJTAt8Jq5C99Pu9bJSuWjdxio/1/public/full?alt=json'
 
 export default {
   name: 'Home',
@@ -36,8 +44,15 @@ export default {
   },
   data () {
     return {
-      worldRotation: 0
+      xAxis: ['Natur über Mensch', 'Mensch über Natur'],
+      yAxis: ['Offen', 'Geschlossen'],
+      zAxis: ['Touching', 'Swiping'],
+      allWordPairs: Array,
+      barColor: '#ad6bd0'
     }
+  },
+  mounted () {
+    this.loadSheet()
   },
   methods: {
     newRandomPoint: function (event) {
@@ -46,6 +61,38 @@ export default {
       const randomPoint = `${Math.random() * 20 - 10} ${Math.random() * 20 - 10} ${Math.random() * 20 - 10}`
       point.setAttribute('animation', `property: position; to: ${randomPoint}; dur: 500; easing: easeInOutQuad; loop: false`)
       // point.setAttribute('position', `${Math.random() * 20 - 10} ${Math.random() * 20 - 10} ${Math.random() * 20 - 10}`)
+    },
+    loadSheet: async function () {
+      const sheetData = await fetch(sheetURL).then(response => response.json())
+      const entries = sheetData.feed.entry.filter(entry => entry.gs$cell.row !== '1')
+      const AlphaSide = entries.filter(entry => entry.gs$cell.col === '1').map(entry => entry.content.$t)
+      const OmegaSide = entries.filter(entry => entry.gs$cell.col === '2').map(entry => entry.content.$t)
+      const bothSidesMerged = AlphaSide.map((entry, index) => {
+        return [entry, OmegaSide[index]]
+      })
+      this.allWordPairs = this.shuffleArray(bothSidesMerged)
+      console.log(entries)
+      console.log(bothSidesMerged)
+    },
+    newWordPairs: function () {
+      const shuffeldWordPairs = this.shuffleArray(this.allWordPairs)
+      this.$set(this, 'xAxis', shuffeldWordPairs[0])
+      this.$set(this, 'yAxis', shuffeldWordPairs[1])
+      this.$set(this, 'zAxis', shuffeldWordPairs[2])
+      document.getElementById('yText')
+    },
+    shuffleArray: function (arrParam) {
+      const arr = arrParam.slice()
+      let length = arr.length
+      let temp
+      let i
+      while (length) {
+        i = Math.floor(Math.random() * length--)
+        temp = arr[length]
+        arr[length] = arr[i]
+        arr[i] = temp
+      }
+      return arr
     }
   }
 }
@@ -71,6 +118,11 @@ export default {
 .newPoint
   grid-column: 2 / span 1
   grid-row: 2 / 5
+  border-radius 1rem
+  background linear-gradient(90deg, #ad6bd0 0%, rgba(0,212,255,0) 100%)
+.newWords
+  grid-column: -3 / span 1
+  grid-row: -2 / -4
   border-radius 1rem
   background linear-gradient(90deg, #ad6bd0 0%, rgba(0,212,255,0) 100%)
 </style>
