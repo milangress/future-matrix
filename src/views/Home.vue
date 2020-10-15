@@ -14,7 +14,7 @@
         SpaceBoxes
         a-sky(color='#726042')
         a-sphere#point(v-on:click="newRandomPoint" position="0 0 0" color="yellow" radius="0.5")
-        a-entity(camera="fov: 30" look-controls orbit-controls="target: 0 0 0; minDistance: 0.5; maxDistance: 180; initialPosition: 30 15 45")
+        a-entity(camera="fov: 30" look-controls orbit-controls="target: 0 0 0; minDistance: 0.5; maxDistance: 180; initialPosition: 30 15 45: dampingFactor: 0.3")
         a-entity(cursor='rayOrigin: mouse')
     .interface
       div.newPoint.btn(v-on:click="newRandomPoint")
