@@ -10,7 +10,7 @@
             animation__mouseleave="property: components.material.material.color; type: color; to: #726042; startEvents: mouseleave; dur: 200")
         horizontal-axis(:leftTxt="xAxis[0]" :rightTxt="xAxis[1]" :barColor="barColor")
         horizontal-axis(rotation="0 90 0" :leftTxt="yAxis[0]" :rightTxt="yAxis[1]" :barColor="barColor")
-        vertical-axis(:leftTxt="zAxis[0]" :rightTxt="zAxis[1]")
+        vertical-axis(:leftTxt="zAxis[0]" :rightTxt="zAxis[1]" :barColor="barColor")
         SpaceBoxes
         a-sky(color='#726042')
         a-entity#point
@@ -79,7 +79,9 @@ export default {
       this.$set(this, 'xAxis', shuffeldWordPairs[0])
       this.$set(this, 'yAxis', shuffeldWordPairs[1])
       this.$set(this, 'zAxis', shuffeldWordPairs[2])
-      document.getElementById('yText')
+      // this.$set(this, 'barColor', `rgb(${Math.random() * 255},${Math.random() * 255},${Math.random() * 255})`)
+      const randomColor = Math.floor(Math.random() * 16777215).toString(16)
+      this.barColor = `#${randomColor}`
     },
     shuffleArray: function (arrParam) {
       const arr = arrParam.slice()

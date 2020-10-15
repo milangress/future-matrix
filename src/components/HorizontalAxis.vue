@@ -1,8 +1,8 @@
 <template lang="pug">
   a-entity(:rotation="rotation")
-    a-box(position='0 0 0' depth="0.1" height="0.1" width="20" color='#ad6bd0')
-    a-cone(position="10 0 0" rotation="0 0 -90" radius-bottom="0.4" radius-top="0" color='#ad6bd0')
-    a-cone(position="-10 0 0" rotation="0 0 90" radius-bottom="0.4" radius-top="0" color='#ad6bd0')
+    a-box(position='0 0 0' depth="0.1" height="0.1" width="20" :color='barColor')
+    a-cone(position="10 0 0" rotation="0 0 -90" radius-bottom="0.4" radius-top="0" :color='barColor')
+    a-cone(position="-10 0 0" rotation="0 0 90" radius-bottom="0.4" radius-top="0" :color='barColor')
     a-entity(position="11 0 0" v-bind:text="leftTextObject")
     a-entity(position="-11 0 0" v-bind:text="rightTextObject")
     a-entity(position="11 0 0" rotation='0 180 0' v-bind:text="leftBackTextObject")
@@ -25,7 +25,8 @@ export default {
   props: {
     leftTxt: String,
     rightTxt: String,
-    rotation: String
+    rotation: String,
+    barColor: String
   },
   data () {
     return {
