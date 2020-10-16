@@ -6,7 +6,6 @@ import store from './store'
 require('aframe')
 require('aframe-orbit-controls')
 require('aframe-text-geometry-component')
-// require('aframe-animation-component')
 require('aframe-aabb-collider-component')
 
 Vue.config.productionTip = false
