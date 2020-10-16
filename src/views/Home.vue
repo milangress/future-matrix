@@ -144,5 +144,5 @@ export default {
   grid-column: -3 / span 1
   grid-row: -2 / -4
   border-radius 1rem
-  background linear-gradient(90deg, #ad6bd0 0%, rgba(0,212,255,0) 100%)
+  background linear-gradient(-90deg, #ad6bd0 0%, rgba(0,212,255,0) 100%)
 </style>
