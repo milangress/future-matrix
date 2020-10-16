@@ -121,7 +121,7 @@ export default {
   width: 100vw
   height: 100vh
 .interface
-  top 0px
+  top 0
   width 100%
   height 100%
   position fixed
