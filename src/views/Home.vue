@@ -13,7 +13,7 @@
           horizontal-axis(rotation="0 90 0" :leftTxt="yAxis[0]" :rightTxt="yAxis[1]" :barColor="barColor")
           vertical-axis(:leftTxt="zAxis[0]" :rightTxt="zAxis[1]" :barColor="barColor")
           SpaceBoxes
-          a-sky(color='#726042')
+          a-sky(color='#726042' animation="startEvents: changeSky; property: color; from: #ffffff; to: #726042; dir:alternate;")
           a-entity#point
             a-entity(light="color: #blue; intensity: 2.8; type: point; distance: 40; decay: 5" position="0 0 0")
             a-sphere#point(v-on:click="newRandomPoint" position="0 0 0" color="blue" radius="0.5")
@@ -79,8 +79,9 @@ export default {
       const that = this
       const originalBarColor = this.barColor
       const mainAxis = document.querySelector('#mainAxis')
-      debugger
+      const sky = document.querySelector('a-sky')
       mainAxis.emit('startRotating')
+      sky.emit('changeSky')
       const mainLoopId = setInterval(function () {
         // Do your update stuff...
         that.newWordPairs()
