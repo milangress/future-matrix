@@ -91,10 +91,10 @@ export default {
       }, 1000)
     },
     newWordPairs: function () {
-      const shuffeldWordPairs = this.shuffleArray(this.allWordPairs)
-      this.$set(this, 'xAxis', shuffeldWordPairs[0])
-      this.$set(this, 'yAxis', shuffeldWordPairs[1])
-      this.$set(this, 'zAxis', shuffeldWordPairs[2])
+      const shuffledWordPairs = this.shuffleArray(this.allWordPairs)
+      this.$set(this, 'xAxis', shuffledWordPairs[0])
+      this.$set(this, 'yAxis', shuffledWordPairs[1])
+      this.$set(this, 'zAxis', shuffledWordPairs[2])
       // this.$set(this, 'barColor', `rgb(${Math.random() * 255},${Math.random() * 255},${Math.random() * 255})`)
       const randomColor = Math.floor(Math.random() * 16777215).toString(16)
       this.barColor = `#${randomColor}`
