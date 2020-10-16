@@ -4,10 +4,14 @@
     .aframe-matrix
       a-scene(embedded vr-mode-ui="enabled: false")
         a-assets
-          a-mixin(id="SpaceBox"
+          img(id="SpaceBoxTextur" src="/SpaceBoxTextur.png")
+          // a-mixin(id="SpaceBox"
             material="shader: flat; side: double; depthTest: false; color: #000; transparent: true; opacity: 0.03"
             animation__mouseenter="property: components.material.material.color; type: color; to: white; startEvents: mouseenter; dur: 200"
             animation__mouseleave="property: components.material.material.color; type: color; to: #000; startEvents: mouseleave; dur: 200"
+            aabb-collider="objects: #point;")
+          a-mixin(id="SpaceBox"
+            material="shader: flat; side: double; depthTest: false; color: #000; transparent: true; opacity: 0"
             aabb-collider="objects: #point;")
         a-entity#mainAxis(animation="startEvents: startRotating; easing:easeOutElastic; property:rotation; from:0 0 0; to:0 1080 0; dur: 1700; loop:false")
           horizontal-axis(:leftTxt="xAxis[0]" :rightTxt="xAxis[1]" :barColor="barColor")

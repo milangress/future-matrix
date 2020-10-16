@@ -25,14 +25,14 @@ export default {
       box.addEventListener('hitstart', function () {
         console.log(box.attributes)
         box.setAttribute('material', {
-          wireframe: true,
+          src: '#SpaceBoxTextur',
           opacity: 1
         })
         box.setAttribute('color', 'white')
       })
       box.addEventListener('hitend', function () {
         box.setAttribute('material', {
-          wireframe: false,
+          src: false,
           opacity: 0
         })
         box.setAttribute('color', '#000')
