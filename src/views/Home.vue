@@ -49,7 +49,7 @@ export default {
       yAxis: ['Offen', 'Geschlossen'],
       zAxis: ['Touching', 'Swiping'],
       allWordPairs: Array,
-      barColor: '#ad6bd0'
+      barColor: '#fea421' // '#ad6bd0'
     }
   },
   mounted () {
