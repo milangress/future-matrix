@@ -5,7 +5,7 @@
       a-scene(embedded vr-mode-ui="enabled: false")
         a-assets
           a-mixin(id="SpaceBox"
-            material="shader: flat; side: double; depthTest: false; color: #726042; transparent: true; opacity: 0.03"
+            material="shader: flat; side: double; depthTest: false; color: #000; transparent: true; opacity: 0.03"
             animation__mouseenter="property: components.material.material.color; type: color; to: white; startEvents: mouseenter; dur: 200"
             animation__mouseleave="property: components.material.material.color; type: color; to: #000; startEvents: mouseleave; dur: 200"
             aabb-collider="objects: #point;")
