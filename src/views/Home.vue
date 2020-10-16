@@ -8,8 +8,7 @@
             material="shader: flat; side: double; depthTest: false; color: #726042; transparent: true; opacity: 0.03"
             animation__mouseenter="property: components.material.material.color; type: color; to: white; startEvents: mouseenter; dur: 200"
             animation__mouseleave="property: components.material.material.color; type: color; to: #726042; startEvents: mouseleave; dur: 200")
-        a-entity#mainAxis(animation="startEvents: startRotating; easing:easeInQuad; property:rotation; from:0 0 0; to:0 1050 0; loop:false")
-          // a-animation(id="rotateAll" begin="rotateAxis" attribute="rotation" from="0 0 0" to="0 0 360" delay="0"dur="1000" fill="forwards" repeat="0")
+        a-entity#mainAxis(animation="startEvents: startRotating; easing:easeOutElastic; property:rotation; from:0 0 0; to:0 1080 0; dur: 1700; loop:false")
           horizontal-axis(:leftTxt="xAxis[0]" :rightTxt="xAxis[1]" :barColor="barColor")
           horizontal-axis(rotation="0 90 0" :leftTxt="yAxis[0]" :rightTxt="yAxis[1]" :barColor="barColor")
           vertical-axis(:leftTxt="zAxis[0]" :rightTxt="zAxis[1]" :barColor="barColor")
@@ -85,7 +84,7 @@ export default {
       const mainLoopId = setInterval(function () {
         // Do your update stuff...
         that.newWordPairs()
-      }, 4)
+      }, 3)
       window.setTimeout(() => {
         clearInterval(mainLoopId)
         this.barColor = originalBarColor
