@@ -8,21 +8,23 @@
             material="shader: flat; side: double; depthTest: false; color: #726042; transparent: true; opacity: 0.03"
             animation__mouseenter="property: components.material.material.color; type: color; to: white; startEvents: mouseenter; dur: 200"
             animation__mouseleave="property: components.material.material.color; type: color; to: #726042; startEvents: mouseleave; dur: 200")
-        horizontal-axis(:leftTxt="xAxis[0]" :rightTxt="xAxis[1]" :barColor="barColor")
-        horizontal-axis(rotation="0 90 0" :leftTxt="yAxis[0]" :rightTxt="yAxis[1]" :barColor="barColor")
-        vertical-axis(:leftTxt="zAxis[0]" :rightTxt="zAxis[1]" :barColor="barColor")
-        SpaceBoxes
-        a-sky(color='#726042')
-        a-entity#point
-          a-entity(light="color: #blue; intensity: 2.8; type: point; distance: 40; decay: 5" position="0 0 0")
-          a-sphere#point(v-on:click="newRandomPoint" position="0 0 0" color="blue" radius="0.5")
+        a-entity#mainAxis(animation="startEvents: startRotating; easing:easeInQuad; property:rotation; from:0 0 0; to:0 1050 0; loop:false")
+          // a-animation(id="rotateAll" begin="rotateAxis" attribute="rotation" from="0 0 0" to="0 0 360" delay="0"dur="1000" fill="forwards" repeat="0")
+          horizontal-axis(:leftTxt="xAxis[0]" :rightTxt="xAxis[1]" :barColor="barColor")
+          horizontal-axis(rotation="0 90 0" :leftTxt="yAxis[0]" :rightTxt="yAxis[1]" :barColor="barColor")
+          vertical-axis(:leftTxt="zAxis[0]" :rightTxt="zAxis[1]" :barColor="barColor")
+          SpaceBoxes
+          a-sky(color='#726042')
+          a-entity#point
+            a-entity(light="color: #blue; intensity: 2.8; type: point; distance: 40; decay: 5" position="0 0 0")
+            a-sphere#point(v-on:click="newRandomPoint" position="0 0 0" color="blue" radius="0.5")
         a-entity(light="type: ambient; color: #BBB")
         a-entity(light="type: directional; color: #FFF; intensity: 0.6" position="-0.5 1 1")
         a-entity(camera="fov: 30" look-controls orbit-controls="target: 0 0 0; minDistance: 0.5; maxDistance: 180; initialPosition: 30 15 45: dampingFactor: 0.3")
         a-entity(cursor='rayOrigin: mouse')
     .interface
       div.newPoint.btn(v-on:click="newRandomPoint")
-      div.newWords.btn(v-on:click="newWordPairs")
+      div.newWords.btn(v-on:click="startNewWordPairs")
 </template>
 
 <script>
@@ -73,6 +75,21 @@ export default {
       this.allWordPairs = this.shuffleArray(bothSidesMerged)
       console.log(entries)
       console.log(bothSidesMerged)
+    },
+    startNewWordPairs: function () {
+      const that = this
+      const originalBarColor = this.barColor
+      const mainAxis = document.querySelector('#mainAxis')
+      debugger
+      mainAxis.emit('startRotating')
+      const mainLoopId = setInterval(function () {
+        // Do your update stuff...
+        that.newWordPairs()
+      }, 4)
+      window.setTimeout(() => {
+        clearInterval(mainLoopId)
+        this.barColor = originalBarColor
+      }, 1000)
     },
     newWordPairs: function () {
       const shuffeldWordPairs = this.shuffleArray(this.allWordPairs)
