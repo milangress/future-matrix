@@ -7,16 +7,17 @@
           a-mixin(id="SpaceBox"
             material="shader: flat; side: double; depthTest: false; color: #726042; transparent: true; opacity: 0.03"
             animation__mouseenter="property: components.material.material.color; type: color; to: white; startEvents: mouseenter; dur: 200"
-            animation__mouseleave="property: components.material.material.color; type: color; to: #726042; startEvents: mouseleave; dur: 200")
+            animation__mouseleave="property: components.material.material.color; type: color; to: #726042; startEvents: mouseleave; dur: 200"
+            aabb-collider="objects: #point;")
         a-entity#mainAxis(animation="startEvents: startRotating; easing:easeOutElastic; property:rotation; from:0 0 0; to:0 1080 0; dur: 1700; loop:false")
           horizontal-axis(:leftTxt="xAxis[0]" :rightTxt="xAxis[1]" :barColor="barColor")
           horizontal-axis(rotation="0 90 0" :leftTxt="yAxis[0]" :rightTxt="yAxis[1]" :barColor="barColor")
           vertical-axis(:leftTxt="zAxis[0]" :rightTxt="zAxis[1]" :barColor="barColor")
           SpaceBoxes
           a-sky(color='#726042' animation="startEvents: changeSky; property: color; from: #ffffff; to: #726042; dir:alternate;")
-          a-entity#point
+          a-entity#point(data-aabb-collider-dynamic="true" aabb-collider="objects: .spaceBox;")
             a-entity(light="color: #blue; intensity: 2.8; type: point; distance: 40; decay: 5" position="0 0 0")
-            a-sphere#point(v-on:click="newRandomPoint" position="0 0 0" color="blue" radius="0.5")
+            a-sphere(v-on:click="newRandomPoint" position="0 0 0" color="blue" radius="0.3")
         a-entity(light="type: ambient; color: #BBB")
         a-entity(light="type: directional; color: #FFF; intensity: 0.6" position="-0.5 1 1")
         a-entity(camera="fov: 30" look-controls orbit-controls="target: 0 0 0; minDistance: 0.5; maxDistance: 180; initialPosition: 30 15 45: dampingFactor: 0.3")
@@ -59,7 +60,7 @@ export default {
     newRandomPoint: function (event) {
       console.log(event.target)
       const point = document.querySelector('#point')
-      const randomPoint = `${Math.random() * 20 - 10} ${Math.random() * 20 - 10} ${Math.random() * 20 - 10}`
+      const randomPoint = `${Math.random() * 18 - 9} ${Math.random() * 18 - 9} ${Math.random() * 18 - 9}`
       point.setAttribute('animation', `property: position; to: ${randomPoint}; dur: 500; easing: easeInOutQuad; loop: false`)
       // point.setAttribute('position', `${Math.random() * 20 - 10} ${Math.random() * 20 - 10} ${Math.random() * 20 - 10}`)
     },
