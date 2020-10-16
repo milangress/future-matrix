@@ -35,7 +35,7 @@ export default {
           wireframe: false,
           opacity: 0
         })
-        box.setAttribute('color', '#726042')
+        box.setAttribute('color', '#000')
       })
     })
   },

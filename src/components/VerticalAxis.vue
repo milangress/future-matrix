@@ -15,7 +15,7 @@
 const mainTextObject = {
   width: 10,
   wrapCount: '20',
-  color: 'black',
+  color: 'white',
   anchor: 'center',
   align: 'center',
   font: '/oracle-msdf.json',

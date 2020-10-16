@@ -7,14 +7,14 @@
           a-mixin(id="SpaceBox"
             material="shader: flat; side: double; depthTest: false; color: #726042; transparent: true; opacity: 0.03"
             animation__mouseenter="property: components.material.material.color; type: color; to: white; startEvents: mouseenter; dur: 200"
-            animation__mouseleave="property: components.material.material.color; type: color; to: #726042; startEvents: mouseleave; dur: 200"
+            animation__mouseleave="property: components.material.material.color; type: color; to: #000; startEvents: mouseleave; dur: 200"
             aabb-collider="objects: #point;")
         a-entity#mainAxis(animation="startEvents: startRotating; easing:easeOutElastic; property:rotation; from:0 0 0; to:0 1080 0; dur: 1700; loop:false")
           horizontal-axis(:leftTxt="xAxis[0]" :rightTxt="xAxis[1]" :barColor="barColor")
           horizontal-axis(rotation="0 90 0" :leftTxt="yAxis[0]" :rightTxt="yAxis[1]" :barColor="barColor")
           vertical-axis(:leftTxt="zAxis[0]" :rightTxt="zAxis[1]" :barColor="barColor")
           SpaceBoxes
-          a-sky(color='#726042' animation="startEvents: changeSky; property: color; from: #ffffff; to: #726042; dir:alternate;")
+          a-sky(color='#000' animation="startEvents: changeSky; property: color; from: #ffffff; to: #000; dir:alternate;")
           a-entity#point(data-aabb-collider-dynamic="true" aabb-collider="objects: .spaceBox;")
             a-entity(light="color: #blue; intensity: 2.8; type: point; distance: 40; decay: 5" position="0 0 0")
             a-sphere(v-on:click="newRandomPoint" position="0 0 0" color="blue" radius="0.3")
@@ -50,7 +50,7 @@ export default {
       yAxis: ['Offen', 'Geschlossen'],
       zAxis: ['Touching', 'Swiping'],
       allWordPairs: Array,
-      barColor: '#fea421' // '#ad6bd0'
+      barColor: '#fea421' // Old Bar: '#ad6bd0' old Sky: #726042
     }
   },
   mounted () {
