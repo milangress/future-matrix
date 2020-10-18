@@ -4,6 +4,7 @@
     .aframe-matrix
       a-scene(embedded vr-mode-ui="enabled: false")
         a-assets
+          a-asset-item(id="helix" src="/helix-simple.glb")
           img(id="SpaceBoxTextur" src="/SpaceBoxTextur.png")
           // a-mixin(id="SpaceBox"
             material="shader: flat; side: double; depthTest: false; color: #000; transparent: true; opacity: 0.03"
@@ -22,6 +23,7 @@
           a-entity#point(data-aabb-collider-dynamic="true" aabb-collider="objects: .spaceBox;")
             a-entity(light="color: #blue; intensity: 2.8; type: point; distance: 40; decay: 5" position="0 0 0")
             a-sphere(v-on:click="newRandomPoint" position="0 0 0" color="blue" radius="0.3")
+          a-entity(gltf-model="#helix")
         a-entity(light="type: ambient; color: #BBB")
         a-entity(light="type: directional; color: #FFF; intensity: 0.6" position="-0.5 1 1")
         a-entity(camera="fov: 30" look-controls orbit-controls="target: 0 0 0; minDistance: 0.5; maxDistance: 180; initialPosition: 30 15 45: dampingFactor: 0.3")
