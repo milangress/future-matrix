@@ -20,7 +20,9 @@ Vue.config.ignoredElements = [
   'a-mixin',
   'a-cone',
   'a-sky',
-  'a-sphere'
+  'a-sphere',
+  'a-gltf-model',
+  'a-asset-item'
 ]
 
 new Vue({
