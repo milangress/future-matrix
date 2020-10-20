@@ -34,6 +34,7 @@
     .interface
       div.newPoint.btn(v-on:click="newRandomPoint")
       div.newWords.btn(v-on:click="startNewWordPairs")
+      div.hideHelix.btn(v-on:click="toggleHelixVisibility")
 </template>
 
 <script>
@@ -59,7 +60,8 @@ export default {
       yAxis: ['Offen', 'Geschlossen'],
       zAxis: ['Touching', 'Swiping'],
       allWordPairs: Array,
-      barColor: '#fea421' // Old Bar: '#ad6bd0' old Sky: #726042
+      barColor: '#fea421', // Old Bar: '#ad6bd0' old Sky: #726042
+      helixIsVisible: true
     }
   },
   mounted () {
@@ -110,6 +112,9 @@ export default {
       const randomColor = Math.floor(Math.random() * 16777215).toString(16)
       this.barColor = `#${randomColor}`
     },
+    toggleHelixVisibility: function () {
+      this.helixIsVisible = !this.helixIsVisible
+    },
     shuffleArray: function (arrParam) {
       const arr = arrParam.slice()
       let length = arr.length
@@ -152,6 +157,11 @@ export default {
 .newWords
   grid-column: -3 / span 1
   grid-row: -2 / -4
+  border-radius 1rem
+  background linear-gradient(-90deg, #ad6bd0 0%, rgba(0,212,255,0) 100%)
+.hideHelix
+  grid-column: -3 / span 1
+  grid-row: 2 / 2
   border-radius 1rem
   background linear-gradient(-90deg, #ad6bd0 0%, rgba(0,212,255,0) 100%)
 </style>
