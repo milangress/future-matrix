@@ -57,7 +57,7 @@ export default {
   data () {
     return {
       xAxis: ['Natur über Mensch', 'Mensch über Natur'],
-      yAxis: ['Offen', 'Geschlossen'],
+      yAxis: ['Transparent', 'Intransparent'],
       zAxis: ['Touching', 'Swiping'],
       allWordPairs: Array,
       barColor: '#fea421', // Old Bar: '#ad6bd0' old Sky: #726042
