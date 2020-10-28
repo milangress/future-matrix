@@ -57,8 +57,8 @@ export default {
   data () {
     return {
       xAxis: ['Natur über Mensch', 'Mensch über Natur'],
-      yAxis: ['Transparent', 'Intransparent'],
-      zAxis: ['Touching', 'Swiping'],
+      yAxis: ['Transparenz', 'Intransparenz'],
+      zAxis: ['Berührung', 'Virtualität'],
       allWordPairs: Array,
       barColor: '#fea421', // Old Bar: '#ad6bd0' old Sky: #726042
       helixIsVisible: true
