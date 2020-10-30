@@ -40,8 +40,6 @@
 
 <script>
 // @ is an alias to /src
-// import HelloWorld from '@/components/HelloWorld.vue'
-// import Vue from 'vue'
 import HorizontalAxis from '@/components/HorizontalAxis'
 import VerticalAxis from '@/components/VerticalAxis'
 import SpaceBoxes from '@/components/SpaceBoxes'
