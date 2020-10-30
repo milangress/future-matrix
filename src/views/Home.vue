@@ -35,6 +35,7 @@
       div.newPoint.btn(v-on:click="newRandomPoint")
       div.newWords.btn(v-on:click="startNewWordPairs")
       div.hideHelix.btn(v-on:click="toggleHelixVisibility")
+      div.questions.btn(v-on:click="newQuestion") {{questions[0]}}
 </template>
 
 <script>
@@ -46,6 +47,7 @@ import VerticalAxis from '@/components/VerticalAxis'
 import SpaceBoxes from '@/components/SpaceBoxes'
 
 const sheetURL = 'https://spreadsheets.google.com/feeds/cells/1LwSUWGNRwzb_5nKIQfBJTAt8Jq5C99Pu9bJSuWjdxio/1/public/full?alt=json'
+const sheetURLQuestions = 'https://spreadsheets.google.com/feeds/cells/1LwSUWGNRwzb_5nKIQfBJTAt8Jq5C99Pu9bJSuWjdxio/2/public/full?alt=json'
 
 export default {
   name: 'Home',
@@ -61,11 +63,13 @@ export default {
       zAxis: ['Berührung', 'Virtualität'],
       allWordPairs: Array,
       barColor: '#fea421', // Old Bar: '#ad6bd0' old Sky: #726042
-      helixIsVisible: true
+      helixIsVisible: true,
+      questions: []
     }
   },
   mounted () {
     this.loadSheet()
+    this.loadSheetQuestions()
   },
   methods: {
     newRandomPoint: function (event) {
@@ -84,8 +88,19 @@ export default {
         return [entry, OmegaSide[index]]
       })
       this.allWordPairs = this.shuffleArray(bothSidesMerged)
-      console.log(entries)
-      console.log(bothSidesMerged)
+    },
+    loadSheetQuestions: async function () {
+      const sheetData = await fetch(sheetURLQuestions).then(response => response.json())
+      const entries = sheetData.feed.entry
+      const questions = entries.filter(entry => entry.gs$cell.col === '1').map(entry => entry.content.$t)
+      console.log('test')
+      console.log(sheetData)
+      this.questions = this.shuffleArray(questions)
+    },
+    newQuestion: function () {
+      const newQuestion = this.shuffleArray(this.questions)
+      console.log('newQuestion')
+      this.$set(this, 'questions', newQuestion)
     },
     startNewWordPairs: function () {
       const that = this
@@ -164,4 +179,12 @@ export default {
   grid-row: 2 / 2
   border-radius 1rem
   background linear-gradient(-90deg, #ad6bd0 0%, rgba(0,212,255,0) 100%)
+.questions
+  grid-column: 2 / span 3
+  grid-row: -2 / -3
+  text-align left
+  color white
+  border-radius 1rem
+  padding 0.5rem
+  background linear-gradient(0deg, #ad6bd0 0%, rgba(0,212,255,0) 100%)
 </style>
