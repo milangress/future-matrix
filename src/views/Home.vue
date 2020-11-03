@@ -43,6 +43,7 @@
 import HorizontalAxis from '@/components/HorizontalAxis'
 import VerticalAxis from '@/components/VerticalAxis'
 import SpaceBoxes from '@/components/SpaceBoxes'
+import gsap from 'gsap'
 
 const sheetURL = 'https://spreadsheets.google.com/feeds/cells/1LwSUWGNRwzb_5nKIQfBJTAt8Jq5C99Pu9bJSuWjdxio/1/public/full?alt=json'
 const sheetURLQuestions = 'https://spreadsheets.google.com/feeds/cells/1LwSUWGNRwzb_5nKIQfBJTAt8Jq5C99Pu9bJSuWjdxio/2/public/full?alt=json'
