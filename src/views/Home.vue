@@ -21,7 +21,7 @@
           vertical-axis(:leftTxt="zAxis[0]" :rightTxt="zAxis[1]" :barColor="barColor")
           SpaceBoxes
           a-sky(color='#000' animation="startEvents: changeSky; property: color; from: #ffffff; to: #000; dir:alternate;")
-          a-entity#point(data-aabb-collider-dynamic="true" aabb-collider="objects: .spaceBox;")
+          a-entity#point(:position="animatedPointPositionString" data-aabb-collider-dynamic="true" aabb-collider="objects: .spaceBox;")
             a-entity(light="color: #blue; intensity: 2.8; type: point; distance: 40; decay: 5" position="0 0 0")
             a-sphere(v-on:click="newRandomPoint" position="0 0 0" color="blue" radius="0.3")
           a-entity(v-if="helixIsVisible") <!--animation="easing:linear; property:rotation; from:0 0 0; to:0 360 0; dur: 17000; loop:true"-->
@@ -35,6 +35,10 @@
       div.newPoint.btn(v-on:click="newRandomPoint")
       div.newWords.btn(v-on:click="startNewWordPairs")
       div.hideHelix.btn(v-on:click="toggleHelixVisibility")
+      div.changePoint.btn
+        input(type="range" min="-9" max="9" v-model="pointPosition.x")
+        input(type="range" min="-9" max="9" v-model="pointPosition.y")
+        input(type="range" min="-9" max="9" v-model="pointPosition.z")
       div.questions.btn(v-on:click="newQuestion") {{questions[0]}}
 </template>
 
@@ -63,7 +67,13 @@ export default {
       allWordPairs: Array,
       barColor: '#fea421', // Old Bar: '#ad6bd0' old Sky: #726042
       helixIsVisible: true,
-      questions: []
+      questions: [],
+      pointPosition: {
+        x: 0,
+        y: 0,
+        z: 0
+      },
+      tweenedPointPosition: { x: 0, y: 0, z: 0 }
     }
   },
   mounted () {
@@ -72,11 +82,15 @@ export default {
   },
   methods: {
     newRandomPoint: function (event) {
-      console.log(event.target)
-      const point = document.querySelector('#point')
-      const randomPoint = `${Math.random() * 18 - 9} ${Math.random() * 18 - 9} ${Math.random() * 18 - 9}`
-      point.setAttribute('animation', `property: position; to: ${randomPoint}; dur: 500; easing: easeInOutQuad; loop: false`)
+      // const point = document.querySelector('#point')
+      // const randomPoint = `${Math.random() * 18 - 9} ${Math.random() * 18 - 9} ${Math.random() * 18 - 9}`
+      // point.setAttribute('animation', `property: position; to: ${randomPoint}; dur: 500; easing: easeInOutQuad; loop: false`)
       // point.setAttribute('position', `${Math.random() * 20 - 10} ${Math.random() * 20 - 10} ${Math.random() * 20 - 10}`)
+      this.pointPosition = {
+        x: Math.random() * 18 - 9,
+        y: Math.random() * 18 - 9,
+        z: Math.random() * 18 - 9
+      }
     },
     loadSheet: async function () {
       const sheetData = await fetch(sheetURL).then(response => response.json())
@@ -142,6 +156,33 @@ export default {
       }
       return arr
     }
+  },
+  computed: {
+    animatedPointPosition: function () {
+      return {
+        x: this.tweenedPointPosition.x.toFixed(2),
+        y: this.tweenedPointPosition.y.toFixed(2),
+        z: this.tweenedPointPosition.z.toFixed(2)
+      }
+    },
+    animatedPointPositionString: function () {
+      return `${this.animatedPointPosition.x} ${this.animatedPointPosition.y} ${this.animatedPointPosition.z}`
+    }
+  },
+  watch: {
+    pointPosition: {
+      handler (newValue) {
+        console.log(newValue)
+        console.log(this.$data.tweenedPointPosition)
+        gsap.to(this.$data.tweenedPointPosition, {
+          duration: 0.5,
+          x: newValue.x,
+          y: newValue.y,
+          z: newValue.z
+        })
+      },
+      deep: true
+    }
   }
 }
 </script>
@@ -186,4 +227,11 @@ export default {
   border-radius 1rem
   padding 0.5rem
   background linear-gradient(0deg, #ad6bd0 0%, rgba(0,212,255,0) 100%)
+.changePoint
+  grid-column: 2 / span 3
+  grid-row: -4 / -5
+  background linear-gradient(0deg, #ad6bd0 0%, rgba(0,212,255,0) 100%)
+  border-radius 1rem
+.changePoint input
+  width 95%
 </style>
