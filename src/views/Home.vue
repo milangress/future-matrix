@@ -62,7 +62,7 @@ export default {
   data () {
     return {
       xAxis: ['Natur über Mensch', 'Mensch über Natur'],
-      yAxis: ['Transparenz', 'Intransparenz'],
+      yAxis: ['Transparenz', 'Opazität'],
       zAxis: ['Berührung', 'Virtualität'],
       allWordPairs: Array,
       barColor: '#fea421', // Old Bar: '#ad6bd0' old Sky: #726042
