@@ -66,7 +66,7 @@ export default {
       zAxis: ['Berührung', 'Virtualität'],
       allWordPairs: Array,
       barColor: '#fea421', // Old Bar: '#ad6bd0' old Sky: #726042
-      helixIsVisible: true,
+      helixIsVisible: false,
       questions: [],
       pointPosition: {
         x: 0,
