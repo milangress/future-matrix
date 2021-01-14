@@ -59,9 +59,7 @@
         div.btn.nextQuestionBtn(v-on:click="newQuestion") Nächste Frage…
 </template>
 
-// TODO Font
-// TODO Buttons beschriften
-// TODO Reset Point Button
+// TODO Unendliche Matrix
 
 <script>
 // @ is an alias to /src
