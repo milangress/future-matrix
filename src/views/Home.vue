@@ -309,8 +309,8 @@ export default {
   border-radius 1rem*/
 @media (prefers-reduced-motion: no-preference)
   .btn:hover
-    animation: wiiigle-me .2s cubic-bezier(.1,.6,.4,1) infinite;
-@keyframes wiiigle-me
+    animation: wiggle-me .2s cubic-bezier(.1,.6,.4,1) infinite;
+@keyframes wiggle-me
   0%,to
     transform: scale(1.05) rotate(1.5deg)
   25%
