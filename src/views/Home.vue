@@ -32,8 +32,8 @@
         a-entity(camera="fov: 30" look-controls orbit-controls="target: 0 0 0; minDistance: 0.5; maxDistance: 180; initialPosition: 30 15 45: dampingFactor: 0.3")
         a-entity(cursor='rayOrigin: mouse')
     .interface
-      div.newPoint.btn(v-on:click="newRandomPoint")
-      div.newWords.btn(v-on:click="startNewWordPairs")
+      div.newPoint.btn(v-on:click="newRandomPoint") Zufälliger Punkt
+      div.newWords.btn(v-on:click="startNewWordPairs") Zufällige Achsen
       div.hideHelix.btn(v-on:click="toggleHelixVisibility")
       div.changePoint.btn
         input(type="range" min="-9" max="9" v-model="pointPosition.x")
@@ -212,12 +212,23 @@ export default {
   grid-column: 2 / span 1
   grid-row: 2 / 5
   border-radius 1rem
-  background linear-gradient(90deg, #ad6bd0 0%, rgba(0,212,255,0) 100%)
+  background linear-gradient(-90deg, #ad6bd0 0%, rgba(0,212,255,0) 100%)
+  writing-mode: vertical-lr
+  transform: rotate(180deg)
+  display: flex
+  justify-content: center
+  align-items: center
+  color: white
 .newWords
   grid-column: -3 / span 1
   grid-row: -2 / -4
   border-radius 1rem
   background linear-gradient(-90deg, #ad6bd0 0%, rgba(0,212,255,0) 100%)
+  writing-mode: vertical-lr
+  display: flex
+  justify-content: center
+  align-items: center
+  color: white
 .hideHelix
   grid-column: -3 / span 1
   grid-row: 2 / 2
