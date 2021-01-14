@@ -110,8 +110,6 @@ export default {
       const sheetData = await fetch(sheetURLQuestions).then(response => response.json())
       const entries = sheetData.feed.entry
       const questions = entries.filter(entry => entry.gs$cell.col === '1').map(entry => entry.content.$t)
-      console.log('test')
-      console.log(sheetData)
       this.questions = this.shuffleArray(questions)
     },
     newQuestion: function () {
