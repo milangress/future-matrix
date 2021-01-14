@@ -42,6 +42,10 @@
       div.questions.btn(v-on:click="newQuestion") {{questions[0]}}
 </template>
 
+// TODO Font
+// TODO Buttons beschriften
+// TODO Reset Point Button
+
 <script>
 // @ is an alias to /src
 import HorizontalAxis from '@/components/HorizontalAxis'
