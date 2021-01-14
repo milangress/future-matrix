@@ -36,8 +36,8 @@
         div.newPointInner(v-on:click="newRandomPoint") ① [1] Zufälliger Punkt
       div.newWords.btn(v-on:click="startNewWordPairs") Zufällige Achsen
       div.hideHelix.btn(v-on:click="toggleHelixVisibility")
-      div.btn.openQuestionWindow(v-on:click="toggleQuestionWindowIsVisible" v-bind:class="{hidden: !questionWindowIsVisible}") ②
-      div.wrapperChangePointQuestions(v-bind:class="{hidden: questionWindowIsVisible}")
+      div.btn.openQuestionWindow(v-on:click="toggleQuestionWindowIsVisible" v-bind:class="{hidden: !questionWindowIsNOTVisible}") ②
+      div.wrapperChangePointQuestions(v-bind:class="{hidden: questionWindowIsNOTVisible}")
         div.btn.closeWindow(v-on:click="toggleQuestionWindowIsVisible")
           img(src="/CloseWindow-X.svg" alt="hide Window" width="20px")
         p [2] Du Kannst auch selber bestimmen welchen Punkt du untersuchen möchtest:
@@ -86,7 +86,7 @@ export default {
       allWordPairs: Array,
       barColor: '#fea421', // Old Bar: '#ad6bd0' old Sky: #726042
       helixIsVisible: false,
-      questionWindowIsVisible: false,
+      questionWindowIsNOTVisible: true,
       questions: [],
       pointPosition: {
         x: 0,
@@ -162,7 +162,7 @@ export default {
       this.helixIsVisible = !this.helixIsVisible
     },
     toggleQuestionWindowIsVisible: function () {
-      this.questionWindowIsVisible = !this.questionWindowIsVisible
+      this.questionWindowIsNOTVisible = !this.questionWindowIsNOTVisible
     },
     shuffleArray: function (arrParam) {
       const arr = arrParam.slice()
