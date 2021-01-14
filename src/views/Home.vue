@@ -267,7 +267,6 @@ export default {
   display: flex
   justify-content: center
   align-items: center
-  color: white
 .newWords
   grid-column: -3 / span 1
   grid-row: -2 / -4
