@@ -212,7 +212,7 @@ export default {
   grid-column: 2 / span 1
   grid-row: 2 / 5
   border-radius 1rem
-  background linear-gradient(-90deg, #ad6bd0 0%, rgba(0,212,255,0) 100%)
+  background linear-gradient(-90deg, #ad6bd0 0%, rgba(0,0,0,0) 100%)
   writing-mode: vertical-lr
   transform: rotate(180deg)
   display: flex
@@ -223,7 +223,7 @@ export default {
   grid-column: -3 / span 1
   grid-row: -2 / -4
   border-radius 1rem
-  background linear-gradient(-90deg, #ad6bd0 0%, rgba(0,212,255,0) 100%)
+  background linear-gradient(-90deg, #ad6bd0 0%, rgba(0,0,0,0) 100%)
   writing-mode: vertical-lr
   display: flex
   justify-content: center
@@ -233,7 +233,7 @@ export default {
   grid-column: -3 / span 1
   grid-row: 2 / 2
   border-radius 1rem
-  background linear-gradient(-90deg, #ad6bd0 0%, rgba(0,212,255,0) 100%)
+  background linear-gradient(-90deg, #ad6bd0 0%, rgba(0,0,0,0) 100%)
 .questions
   grid-column: 2 / span 3
   grid-row: -2 / -3
@@ -241,11 +241,11 @@ export default {
   color white
   border-radius 1rem
   padding 0.5rem
-  background linear-gradient(0deg, #ad6bd0 0%, rgba(0,212,255,0) 100%)
+  background linear-gradient(0deg, #ad6bd0 0%, rgba(0,0,0,0) 100%)
 .changePoint
   grid-column: 2 / span 3
   grid-row: -4 / -5
-  background linear-gradient(0deg, #ad6bd0 0%, rgba(0,212,255,0) 100%)
+  background linear-gradient(0deg, #ad6bd0 0%, rgba(0,0,0,0) 100%)
   border-radius 1rem
 .changePoint input
   width 95%
