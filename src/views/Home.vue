@@ -303,4 +303,16 @@ export default {
   grid-row: -4 / -5
   //background linear-gradient(0deg, #ad6bd0 0%, rgba(0,0,0,0) 100%)
   border-radius 1rem*/
+@media (prefers-reduced-motion: no-preference)
+  .btn:hover
+    animation: wiiigle-me .2s cubic-bezier(.1,.6,.4,1) infinite;
+@keyframes wiiigle-me
+  0%,to
+    transform: scale(1.05) rotate(1.5deg)
+  25%
+    transform: scale(1.05) rotate(0deg)
+  50%
+    transform: scale(1.05) rotate(-1.5deg)
+  75%
+    transform: scale(1.05) rotate(0deg)
 </style>
