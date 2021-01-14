@@ -22,7 +22,7 @@
           SpaceBoxes
           a-sky(color='#000' animation="startEvents: changeSky; property: color; from: #ffffff; to: #000; dir:alternate;")
           a-entity#point(:position="animatedPointPositionString" data-aabb-collider-dynamic="true" aabb-collider="objects: .spaceBox;")
-            a-entity(light="color: #blue; intensity: 2.8; type: point; distance: 40; decay: 5" position="0 0 0")
+            a-entity(light="color: blue; intensity: 2.8; type: point; distance: 40; decay: 5" position="0 0 0")
             a-sphere(v-on:click="newRandomPoint" position="0 0 0" color="blue" radius="0.3")
           a-entity(v-if="helixIsVisible") <!--animation="easing:linear; property:rotation; from:0 0 0; to:0 360 0; dur: 17000; loop:true"-->
             a-gltf-model(:visible="helixIsVisible" src="#helixA")
