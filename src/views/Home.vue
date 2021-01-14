@@ -38,6 +38,7 @@
       div.btn.openQuestionWindow(v-on:click="toggleQuestionWindowIsVisible" v-bind:class="{hidden: !questionWindowIsVisible}") ②
       div.wrapperChangePointQuestions(v-bind:class="{hidden: questionWindowIsVisible}")
         div.btn.closeWindow(v-on:click="toggleQuestionWindowIsVisible")
+          img(src="/CloseWindow-X.svg" alt="hide Window" width="20px")
         p [2] Du Kannst auch selber bestimmen welchen Punkt du untersuchen möchtest:
         div.changePoint
           .sliderWrapper
@@ -238,6 +239,8 @@ export default {
   cursor default
 .wrapperChangePointQuestions.hidden
   display none
+.closeWindow
+  float right
 .sliderWrapper
   display flex
   align-items: center
