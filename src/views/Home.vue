@@ -32,14 +32,29 @@
         a-entity(camera="fov: 30" look-controls orbit-controls="target: 0 0 0; minDistance: 0.5; maxDistance: 180; initialPosition: 30 15 45: dampingFactor: 0.3")
         a-entity(cursor='rayOrigin: mouse' raycaster="objects: .clickable")
     .interface
-      div.newPoint.btn(v-on:click="newRandomPoint") Zufälliger Punkt
+      div.newPoint.btn(v-on:click="newRandomPoint") ① [1] Zufälliger Punkt
       div.newWords.btn(v-on:click="startNewWordPairs") Zufällige Achsen
       div.hideHelix.btn(v-on:click="toggleHelixVisibility")
-      div.changePoint.btn
-        input(type="range" min="-9" max="9" v-model="pointPosition.x")
-        input(type="range" min="-9" max="9" v-model="pointPosition.y")
-        input(type="range" min="-9" max="9" v-model="pointPosition.z")
-      div.questions.btn(v-on:click="newQuestion") {{questions[0]}}
+      div.btn.openQuestionWindow(v-on:click="toggleQuestionWindowIsVisible" v-bind:class="{hidden: !questionWindowIsVisible}") ②
+      div.wrapperChangePointQuestions(v-bind:class="{hidden: questionWindowIsVisible}")
+        div.btn.closeWindow(v-on:click="toggleQuestionWindowIsVisible")
+        p [2] Du Kannst auch selber bestimmen welchen Punkt du untersuchen möchtest:
+        div.changePoint
+          .sliderWrapper
+            span {{xAxis[1]}}
+            input.slider(type="range" min="-9" max="9" v-model="pointPosition.x")
+            span {{xAxis[0]}}
+          .sliderWrapper
+            span {{yAxis[0]}}
+            input(type="range" min="-9" max="9" v-model="pointPosition.z")
+            span {{yAxis[1]}}
+          .sliderWrapper
+            span {{zAxis[1]}}
+            input(type="range" min="-9" max="9" v-model="pointPosition.y")
+            span {{zAxis[0]}}
+        p [3] Anschließend kannst du die Fragen und Aufgaben zum Brainstoming benutzen und dir gedanken zu deinem Szenario machen:
+        p.questions {{questions[0]}}
+        div.btn.nextQuestionBtn(v-on:click="newQuestion") Nächste Frage…
 </template>
 
 // TODO Font
@@ -71,6 +86,7 @@ export default {
       allWordPairs: Array,
       barColor: '#fea421', // Old Bar: '#ad6bd0' old Sky: #726042
       helixIsVisible: false,
+      questionWindowIsVisible: false,
       questions: [],
       pointPosition: {
         x: 0,
@@ -145,6 +161,9 @@ export default {
     toggleHelixVisibility: function () {
       this.helixIsVisible = !this.helixIsVisible
     },
+    toggleQuestionWindowIsVisible: function () {
+      this.questionWindowIsVisible = !this.questionWindowIsVisible
+    },
     shuffleArray: function (arrParam) {
       const arr = arrParam.slice()
       let length = arr.length
@@ -201,8 +220,36 @@ export default {
   z-index 1000
   display grid
   grid-template-columns: 2rem repeat(18, 1fr) 2rem
-  grid-template-rows: 2rem repeat(10, 1fr) 2rem
+  grid-template-rows: 2rem repeat(10, minmax(0, 1fr)) 2rem
+  //grid-auto-rows: fit-content(1em)
   pointer-events none
+.wrapperChangePointQuestions
+  grid-column 2 / span 8
+  grid-row span 6 / -2
+  background rgba(255,255,255, 0.01);
+  backdrop-filter blur(10px)
+  border solid 2px transparent
+  background-clip padding-box
+  box-shadow 10px 10px 10px  rgba(255, 255, 255, 0.03)
+  border-radius 1rem
+  padding 1rem
+  overflow scroll
+  pointer-events all
+  cursor default
+.wrapperChangePointQuestions.hidden
+  display none
+.sliderWrapper
+  display flex
+  align-items: center
+  justify-content: center
+.changePoint input
+  width 50%
+.changePoint span
+  padding 0 1rem
+  width 25%
+  font-size 0.8em
+.changePoint span:first-of-type
+  text-align right
 .btn
   cursor pointer
   pointer-events all
@@ -233,18 +280,25 @@ export default {
   grid-row: 2 / 2
   border-radius 1rem
   background linear-gradient(-90deg, #ad6bd0 0%, rgba(0,0,0,0) 100%)
-.questions
-  grid-column: 2 / span 3
-  grid-row: -2 / -3
-  text-align left
-  color white
+.openQuestionWindow
+  grid-column 2 / span 1
+  grid-row span 1 / -2
   border-radius 1rem
+  background linear-gradient(-90deg, #ad6bd0 0%, rgba(0,0,0,0) 100%)
+  display: flex
+  justify-content: center
+  align-items: center
+.openQuestionWindow.hidden
+  display none
+.questions
+  font-size 1.3em
+.nextQuestionBtn
   background linear-gradient(0deg, #ad6bd0 0%, rgba(0,0,0,0) 100%)
-.changePoint
+  display inline-block
+  border-radius 1rem
+/*.changePoint
   grid-column: 2 / span 3
   grid-row: -4 / -5
-  background linear-gradient(0deg, #ad6bd0 0%, rgba(0,0,0,0) 100%)
-  border-radius 1rem
-.changePoint input
-  width 95%
+  //background linear-gradient(0deg, #ad6bd0 0%, rgba(0,0,0,0) 100%)
+  border-radius 1rem*/
 </style>
