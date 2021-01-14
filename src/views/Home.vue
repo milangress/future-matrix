@@ -32,7 +32,8 @@
         a-entity(camera="fov: 30" look-controls orbit-controls="target: 0 0 0; minDistance: 0.5; maxDistance: 180; initialPosition: 30 15 45: dampingFactor: 0.3")
         a-entity(cursor='rayOrigin: mouse' raycaster="objects: .clickable")
     .interface
-      div.newPoint.btn(v-on:click="newRandomPoint") ① [1] Zufälliger Punkt
+      div.btn.newPoint
+        div.newPointInner(v-on:click="newRandomPoint") ① [1] Zufälliger Punkt
       div.newWords.btn(v-on:click="startNewWordPairs") Zufällige Achsen
       div.hideHelix.btn(v-on:click="toggleHelixVisibility")
       div.btn.openQuestionWindow(v-on:click="toggleQuestionWindowIsVisible" v-bind:class="{hidden: !questionWindowIsVisible}") ②
@@ -260,6 +261,9 @@ export default {
 .newPoint
   grid-column: 2 / span 1
   grid-row: 2 / 5
+.newPointInner
+  width 100%
+  height 100%
   border-radius 1rem
   background linear-gradient(-90deg, #ad6bd0 0%, rgba(0,0,0,0) 100%)
   writing-mode: vertical-lr
