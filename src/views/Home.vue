@@ -310,6 +310,14 @@ export default {
 @media (prefers-reduced-motion: no-preference)
   .btn:hover
     animation: wiggle-me .2s cubic-bezier(.1,.6,.4,1) infinite;
+@media (max-width: 800px)
+  .wrapperChangePointQuestions
+    grid-column 2 / span 12
+    grid-row span 6 / -2
+@media (max-width: 500px)
+  .wrapperChangePointQuestions
+    grid-column 2 / span 18
+    grid-row span 10 / -2
 @keyframes wiggle-me
   0%,to
     transform: scale(1.05) rotate(1.5deg)
