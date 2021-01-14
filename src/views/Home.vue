@@ -208,6 +208,7 @@ export default {
 .btn
   cursor pointer
   pointer-events all
+  padding 0.5rem
 .newPoint
   grid-column: 2 / span 1
   grid-row: 2 / 5
@@ -240,7 +241,6 @@ export default {
   text-align left
   color white
   border-radius 1rem
-  padding 0.5rem
   background linear-gradient(0deg, #ad6bd0 0%, rgba(0,0,0,0) 100%)
 .changePoint
   grid-column: 2 / span 3
