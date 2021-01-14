@@ -4,8 +4,8 @@
     .aframe-matrix
       a-scene(embedded vr-mode-ui="enabled: false")
         a-assets
-          a-asset-item(id="helixA" src="/helix-simplified-A.glb")
-          a-asset-item(id="helixB" src="/helix-simplified-B.glb")
+          //a-asset-item(id="helixA" src="/helix-simplified-A.glb")
+          //a-asset-item(id="helixB" src="/helix-simplified-B.glb")
           img(id="SpaceBoxTextur" src="/SpaceBoxTextur.png")
           // a-mixin(id="SpaceBox"
             material="shader: flat; side: double; depthTest: false; color: #000; transparent: true; opacity: 0.03"
