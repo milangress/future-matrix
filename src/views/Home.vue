@@ -44,15 +44,18 @@
         div.changePoint
           .sliderWrapper
             span {{xAxis[1]}}
-            input.slider(type="range" min="-9" max="9" v-model="pointPosition.x")
+            // input.slider(type="range" min="-9" max="9" v-model="pointPosition.x")
+            custom-slider.slider(min="-9" max="9" step="1" hideLabel v-model="pointPosition.x")
             span {{xAxis[0]}}
           .sliderWrapper
             span {{yAxis[0]}}
-            input(type="range" min="-9" max="9" v-model="pointPosition.z")
+            // input(type="range" min="-9" max="9" v-model="pointPosition.z")
+            custom-slider.slider(min="-9" max="9" step="1" hideLabel v-model="pointPosition.z")
             span {{yAxis[1]}}
           .sliderWrapper
             span {{zAxis[1]}}
-            input(type="range" min="-9" max="9" v-model="pointPosition.y")
+            // input(type="range" min="-9" max="9" v-model="pointPosition.y")
+            custom-slider.slider(min="-9" max="9" step="1" hideLabel v-model="pointPosition.y")
             span {{zAxis[0]}}
         p ③ Anschließend kannst du die Fragen und Aufgaben zum Brainstorming benutzen und dir gedanken zu deinem Szenario machen:
         p.questions {{questions[0]}}
@@ -69,6 +72,7 @@ import HorizontalAxis from '@/components/HorizontalAxis'
 import VerticalAxis from '@/components/VerticalAxis'
 import SpaceBoxes from '@/components/SpaceBoxes'
 import gsap from 'gsap'
+import CustomSlider from '@/components/CustomSlider'
 
 const sheetURL = 'https://spreadsheets.google.com/feeds/cells/1LwSUWGNRwzb_5nKIQfBJTAt8Jq5C99Pu9bJSuWjdxio/1/public/full?alt=json'
 const sheetURLQuestions = 'https://spreadsheets.google.com/feeds/cells/1LwSUWGNRwzb_5nKIQfBJTAt8Jq5C99Pu9bJSuWjdxio/2/public/full?alt=json'
@@ -78,7 +82,8 @@ export default {
   components: {
     HorizontalAxis,
     VerticalAxis,
-    SpaceBoxes
+    SpaceBoxes,
+    CustomSlider
   },
   data () {
     return {
