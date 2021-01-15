@@ -22,7 +22,7 @@ export default {
   data () {
     return {
       totalLength: 30,
-      barLength: 5
+      barLength: 3
     }
   },
   computed: {
