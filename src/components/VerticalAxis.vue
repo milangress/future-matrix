@@ -7,10 +7,13 @@
     a-entity(position="-11 0 0" rotation="-45 0 -90" v-bind:text="rightTextObject")
     a-entity(position="11.5 0 0" rotation="135 0 -90" v-bind:text="leftTextObject")
     a-entity(position="-11 0 0" rotation="135 0 -90" v-bind:text="rightTextObject")
+    endless-axis(rotation='0 0 0' :startPosition="18" :barColor='barColor')
+    endless-axis(rotation='0 180 0' :startPosition="18" :barColor='barColor')
     // a-text(position="2 2 2" rotation="0 0 0" v-bind:value="zAxis[0]")
 </template>
 
 <script>
+import EndlessAxis from '@/components/EndlessAxis'
 
 const mainTextObject = {
   width: 10,
@@ -25,6 +28,7 @@ const mainTextObject = {
 
 export default {
   name: 'HorizontalAxis',
+  components: { EndlessAxis },
   props: {
     leftTxt: String,
     rightTxt: String,
