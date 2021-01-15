@@ -57,7 +57,7 @@
         p ③ Anschließend kannst du die Fragen und Aufgaben zum Brainstoming benutzen und dir gedanken zu deinem Szenario machen:
         p.questions {{questions[0]}}
         div.btn.nextQuestionBtn(v-on:click="newQuestion") Nächste Frage…
-        p ④ weiter auf der seite…
+        p ④ weiter auf der seite… ((TODO: Text schreiben))
 </template>
 
 // TODO: Unendliche Matrix
