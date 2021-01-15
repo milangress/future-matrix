@@ -256,6 +256,7 @@ export default {
   cursor pointer
   pointer-events all
   padding 0.5rem
+  text-align center
 .newPoint
   grid-column: 2 / span 1
   grid-row: 2 / 5
