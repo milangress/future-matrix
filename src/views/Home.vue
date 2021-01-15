@@ -116,20 +116,30 @@ export default {
       }
     },
     loadSheet: async function () {
-      const sheetData = await fetch(sheetURL).then(response => response.json())
-      const entries = sheetData.feed.entry.filter(entry => entry.gs$cell.row !== '1')
-      const AlphaSide = entries.filter(entry => entry.gs$cell.col === '1').map(entry => entry.content.$t)
-      const OmegaSide = entries.filter(entry => entry.gs$cell.col === '2').map(entry => entry.content.$t)
-      const bothSidesMerged = AlphaSide.map((entry, index) => {
-        return [entry, OmegaSide[index]]
-      })
-      this.allWordPairs = this.shuffleArray(bothSidesMerged)
+      try {
+        const sheetData = await fetch(sheetURL).then(response => response.json())
+        const entries = sheetData.feed.entry.filter(entry => entry.gs$cell.row !== '1')
+        const AlphaSide = entries.filter(entry => entry.gs$cell.col === '1').map(entry => entry.content.$t)
+        const OmegaSide = entries.filter(entry => entry.gs$cell.col === '2').map(entry => entry.content.$t)
+        const bothSidesMerged = AlphaSide.map((entry, index) => {
+          return [entry, OmegaSide[index]]
+        })
+        this.allWordPairs = this.shuffleArray(bothSidesMerged)
+        console.log(`successfully loaded ${bothSidesMerged.length} axes`)
+      } catch (err) {
+        console.error(err)
+      }
     },
     loadSheetQuestions: async function () {
-      const sheetData = await fetch(sheetURLQuestions).then(response => response.json())
-      const entries = sheetData.feed.entry
-      const questions = entries.filter(entry => entry.gs$cell.col === '1').map(entry => entry.content.$t)
-      this.questions = this.shuffleArray(questions)
+      try {
+        const sheetData = await fetch(sheetURLQuestions).then(response => response.json())
+        const entries = sheetData.feed.entry
+        const questions = entries.filter(entry => entry.gs$cell.col === '1').map(entry => entry.content.$t)
+        this.questions = this.shuffleArray(questions)
+        console.log(`successfully loaded ${questions.length} Questions`)
+      } catch (err) {
+        console.error(err)
+      }
     },
     newQuestion: function () {
       const newQuestion = this.shuffleArray(this.questions)
