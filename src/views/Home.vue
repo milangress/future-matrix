@@ -316,6 +316,12 @@ export default {
   .wrapperChangePointQuestions
     grid-column 2 / span 18
     grid-row span 10 / -2
+  .btn
+    font-size 0.7em
+  .newPoint, .openQuestionWindow
+    grid-column 2 / span 2
+  .newWords
+    grid-column span 2 / -2
 @keyframes wiggle-me
   0%,to
     transform: scale(1.05) rotate(1.5deg)
