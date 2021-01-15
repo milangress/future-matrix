@@ -229,11 +229,11 @@ export default {
 .wrapperChangePointQuestions
   grid-column 2 / span 8
   grid-row span 6 / -2
-  background rgba(255,255,255, 0.01);
+  background rgba(173, 107, 208, 0.07);
   backdrop-filter blur(10px)
-  border solid 2px transparent
+  border solid 2px rgba(173, 107, 208, 0.2)
   background-clip padding-box
-  box-shadow 10px 10px 10px  rgba(255, 255, 255, 0.03)
+  box-shadow 10px 10px 10px rgba(173, 107, 208, 0.03)
   border-radius 1rem
   padding 1rem
   overflow scroll
