@@ -54,7 +54,7 @@
             span {{zAxis[1]}}
             input(type="range" min="-9" max="9" v-model="pointPosition.y")
             span {{zAxis[0]}}
-        p ③ Anschließend kannst du die Fragen und Aufgaben zum Brainstoming benutzen und dir gedanken zu deinem Szenario machen:
+        p ③ Anschließend kannst du die Fragen und Aufgaben zum Brainstorming benutzen und dir gedanken zu deinem Szenario machen:
         p.questions {{questions[0]}}
         div.btn.nextQuestionBtn(v-on:click="newQuestion") Nächste Frage…
         p ④ weiter auf der seite… ((TODO: Text schreiben))
@@ -104,7 +104,7 @@ export default {
     this.loadSheetQuestions()
   },
   methods: {
-    newRandomPoint: function (event) {
+    newRandomPoint: function () {
       // const point = document.querySelector('#point')
       // const randomPoint = `${Math.random() * 18 - 9} ${Math.random() * 18 - 9} ${Math.random() * 18 - 9}`
       // point.setAttribute('animation', `property: position; to: ${randomPoint}; dur: 500; easing: easeInOutQuad; loop: false`)
@@ -171,9 +171,9 @@ export default {
       const randomColor = Math.floor(Math.random() * 16777215).toString(16)
       this.barColor = `#${randomColor}`
     },
-    toggleHelixVisibility: function () {
+    /* toggleHelixVisibility: function () {
       this.helixIsVisible = !this.helixIsVisible
-    },
+    }, */
     toggleQuestionWindowIsVisible: function () {
       this.questionWindowIsNOTVisible = !this.questionWindowIsNOTVisible
     },
