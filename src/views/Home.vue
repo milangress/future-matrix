@@ -35,7 +35,7 @@
       div.btn.newPoint
         div.newPointInner(v-on:click="newRandomPoint") ① [1] Zufälliger Punkt
       div.newWords.btn(v-on:click="startNewWordPairs") Zufällige Achsen
-      div.hideHelix.btn(v-on:click="toggleHelixVisibility")
+      //div.hideHelix.btn(v-on:click="toggleHelixVisibility")
       div.btn.openQuestionWindow(v-on:click="toggleQuestionWindowIsVisible" v-bind:class="{hidden: !questionWindowIsNOTVisible}") ②
       div.wrapperChangePointQuestions(v-bind:class="{hidden: questionWindowIsNOTVisible}")
         div.btn.closeWindow(v-on:click="toggleQuestionWindowIsVisible")
