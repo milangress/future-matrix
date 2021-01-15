@@ -60,7 +60,8 @@
         p ④ weiter auf der seite…
 </template>
 
-// TODO Unendliche Matrix
+// TODO: Unendliche Matrix
+// TODO: Text schreiben
 
 <script>
 // @ is an alias to /src
