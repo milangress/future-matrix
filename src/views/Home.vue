@@ -60,7 +60,6 @@
         p ④ weiter auf der seite… ((TODO: Text schreiben))
 </template>
 
-// TODO: Unendliche Matrix
 // TODO: Text schreiben
 // TODO: Fenster animieren (fade in)
 
