@@ -320,13 +320,8 @@ export default {
     font-size 0.7em
   .newPoint, .openQuestionWindow
     grid-column 2 / span 2
-  .newPointInner
-    //padding 0.3rem
-    /*position: absolute
-    top: 0
-    right: 0
-    bottom: 0
-    left: 0*/
+  .newPoint
+    padding 0
   .newWords
     grid-column span 2 / -2
 @keyframes wiggle-me
