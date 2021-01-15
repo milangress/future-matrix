@@ -62,6 +62,7 @@
 
 // TODO: Unendliche Matrix
 // TODO: Text schreiben
+// TODO: Fenster animieren (fade in)
 
 <script>
 // @ is an alias to /src
