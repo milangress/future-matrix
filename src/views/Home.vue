@@ -319,7 +319,7 @@ export default {
   grid-row: -4 / -5
   //background linear-gradient(0deg, #ad6bd0 0%, rgba(0,0,0,0) 100%)
   border-radius 1rem*/
-@media (prefers-reduced-motion: no-preference)
+@media (prefers-reduced-motion: no-preference) and (min-width: 800px)
   .btn:hover
     animation: wiggle-me .2s cubic-bezier(.1,.6,.4,1) infinite;
 @media (max-width: 800px)
