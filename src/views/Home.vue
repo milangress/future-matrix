@@ -260,11 +260,13 @@ export default {
 .changePoint input
   width 50%
 .changePoint span
-  padding 0 1rem
   width 25%
   font-size 0.8em
 .changePoint span:first-of-type
   text-align right
+  padding-right 1rem
+.changePoint span:nth-of-type(2)
+  padding-left 1rem
 .btn
   cursor pointer
   pointer-events all
@@ -338,6 +340,10 @@ export default {
     padding 0
   .newWords
     grid-column span 2 / -2
+  .changePoint input
+    width 40%
+  .changePoint span
+    font-size 0.6em
 @keyframes wiggle-me
   0%,to
     transform: scale(1.05) rotate(1.5deg)
