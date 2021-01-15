@@ -33,14 +33,14 @@
         a-entity(cursor='rayOrigin: mouse' raycaster="objects: .clickable")
     .interface
       div.btn.newPoint
-        div.newPointInner(v-on:click="newRandomPoint") ① [1] Zufälliger Punkt
+        div.newPointInner(v-on:click="newRandomPoint") 【1】 Zufälliger Punkt
       div.newWords.btn(v-on:click="startNewWordPairs") Zufällige Achsen
       //div.hideHelix.btn(v-on:click="toggleHelixVisibility")
       div.btn.openQuestionWindow(v-on:click="toggleQuestionWindowIsVisible" v-bind:class="{hidden: !questionWindowIsNOTVisible}") ②
       div.wrapperChangePointQuestions(v-bind:class="{hidden: questionWindowIsNOTVisible}")
         div.btn.closeWindow(v-on:click="toggleQuestionWindowIsVisible")
           img(src="/CloseWindow-X.svg" alt="hide Window" width="20px")
-        p [2] Du Kannst auch selber bestimmen welchen Punkt du untersuchen möchtest:
+        p ② Du Kannst auch selber bestimmen welchen Punkt du untersuchen möchtest:
         div.changePoint
           .sliderWrapper
             span {{xAxis[1]}}
@@ -54,9 +54,10 @@
             span {{zAxis[1]}}
             input(type="range" min="-9" max="9" v-model="pointPosition.y")
             span {{zAxis[0]}}
-        p [3] Anschließend kannst du die Fragen und Aufgaben zum Brainstoming benutzen und dir gedanken zu deinem Szenario machen:
+        p ③ Anschließend kannst du die Fragen und Aufgaben zum Brainstoming benutzen und dir gedanken zu deinem Szenario machen:
         p.questions {{questions[0]}}
         div.btn.nextQuestionBtn(v-on:click="newQuestion") Nächste Frage…
+        p ④ weiter auf der seite…
 </template>
 
 // TODO Unendliche Matrix
@@ -289,7 +290,7 @@ export default {
   grid-column 2 / span 1
   grid-row span 1 / -2
   border-radius 1rem
-  background linear-gradient(-90deg, #ad6bd0 0%, rgba(0,0,0,0) 100%)
+  background linear-gradient(90deg, #ad6bd0 0%, rgba(0,0,0,0) 100%)
   display: flex
   justify-content: center
   align-items: center
