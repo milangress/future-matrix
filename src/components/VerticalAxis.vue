@@ -19,7 +19,7 @@ const mainTextObject = {
   anchor: 'center',
   align: 'center',
   font: '/oracle-msdf.json',
-  'font-image': '/oracle-msdf.png',
+  // 'font-image': '/oracle-msdf.png',
   negate: 'false'
 }
 

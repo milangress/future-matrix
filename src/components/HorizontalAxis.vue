@@ -16,7 +16,7 @@ const mainTextObject = {
   wrapCount: '20',
   color: 'white',
   font: '/oracle-msdf.json',
-  'font-image': '/oracle-msdf.png',
+  // 'font-image': '/oracle-msdf.png',
   negate: 'false'
 }
 
