@@ -1,9 +1,12 @@
 const OptimizePlugin = require('optimize-plugin')
 
-/* module.exports = {
-  configureWebpack: {
+module.exports = {
+  /* configureWebpack: {
     plugins: [
       new OptimizePlugin()
     ]
+  } */
+  devServer: {
+    disableHostCheck: true
   }
-} */
+}
