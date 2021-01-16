@@ -1,16 +1,26 @@
-<template>
-  <input type="range" min="-9" max="9"
+<template lang="pug">
+  .sliderWrapper
+    span(v-bind:class="leftTextActive") {{leftText}}
+    input(type="range" min="-9" max="9"
          v-model="sliderValue"
          @input="update"
-         @change="change">
+         @change="change")
+    span(v-bind:class="rightTextActive") {{rightText}}
 </template>
 
 <script>
 export default {
   name: 'CustomSlider',
   props: {
-    value: {
+    leftText: {
       type: String,
+      default: 'left'
+    },
+    rightText: {
+      type: String,
+      default: 'right'
+    },
+    value: {
       required: false,
       default: ''
     }
@@ -32,6 +42,18 @@ export default {
       this.$emit('change', this.sliderValue)
     }
   },
+  computed: {
+    leftTextActive: function () {
+      return {
+        textIsActive: this.sliderValue < 0
+      }
+    },
+    rightTextActive: function () {
+      return {
+        textIsActive: this.sliderValue > 0
+      }
+    }
+  },
   watch: {
     value: {
       immediate: true,
@@ -45,6 +67,35 @@ export default {
 </script>
 
 <style scoped lang="sass">
+.sliderWrapper
+  display: flex
+  align-items: center
+  justify-content: center
+
+.sliderWrapper
+  input
+    width: 50%
+
+  span
+    width: 25%
+    font-size: 0.8em
+    &:first-of-type
+      text-align: right
+      padding-right: 1rem
+
+    &:nth-of-type(2)
+      padding-left: 1rem
+
+@media (max-width: 500px)
+  .sliderWrapper input
+    width: 40%
+  .sliderWrapper span
+    font-size: 0.6em
+
+.textIsActive
+  color: rgb(173, 107, 208)
+  text-shadow: 0px 0px 10px rgb(0, 0, 0)
+
 // Styling Cross-Browser Compatible Range Inputs with Sass
 // Github: https://github.com/darlanrod/input-range-sass
 // Author: Darlan Rod https://github.com/darlanrod

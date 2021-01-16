@@ -42,21 +42,9 @@
           img(src="/CloseWindow-X.svg" alt="hide Window" width="20px")
         p ② Du Kannst auch selber bestimmen welchen Punkt du untersuchen möchtest:
         div.changePoint
-          .sliderWrapper
-            span {{xAxis[1]}}
-            // input.slider(type="range" min="-9" max="9" v-model="pointPosition.x")
-            custom-slider.slider(min="-9" max="9" step="1" hideLabel v-model="pointPosition.x")
-            span {{xAxis[0]}}
-          .sliderWrapper
-            span {{yAxis[0]}}
-            // input(type="range" min="-9" max="9" v-model="pointPosition.z")
-            custom-slider.slider(min="-9" max="9" step="1" hideLabel v-model="pointPosition.z")
-            span {{yAxis[1]}}
-          .sliderWrapper
-            span {{zAxis[1]}}
-            // input(type="range" min="-9" max="9" v-model="pointPosition.y")
-            custom-slider.slider(min="-9" max="9" step="1" hideLabel v-model="pointPosition.y")
-            span {{zAxis[0]}}
+          custom-slider.slider(min="-9" max="9" step="1" v-model="pointPosition.x" :leftText="xAxis[1]" :rightText="xAxis[0]")
+          custom-slider.slider(min="-9" max="9" step="1" v-model="pointPosition.z" :leftText="yAxis[0]" :rightText="yAxis[1]")
+          custom-slider.slider(min="-9" max="9" step="1" v-model="pointPosition.y" :leftText="zAxis[1]" :rightText="zAxis[0]")
         p ③ Anschließend kannst du die Fragen und Aufgaben zum Brainstorming benutzen und dir gedanken zu deinem Szenario machen:
         p.questions {{questions[0]}}
         div.btn.nextQuestionBtn(v-on:click="newQuestion") Nächste Frage…
@@ -257,20 +245,6 @@ export default {
   display none
 .closeWindow
   float right
-.sliderWrapper
-  display flex
-  align-items: center
-  justify-content: center
-.changePoint input
-  width 50%
-.changePoint span
-  width 25%
-  font-size 0.8em
-.changePoint span:first-of-type
-  text-align right
-  padding-right 1rem
-.changePoint span:nth-of-type(2)
-  padding-left 1rem
 .btn
   cursor pointer
   pointer-events all
@@ -344,10 +318,6 @@ export default {
     padding 0
   .newWords
     grid-column span 2 / -2
-  .changePoint input
-    width 40%
-  .changePoint span
-    font-size 0.6em
 @keyframes wiggle-me
   0%,to
     transform: scale(1.05) rotate(1.5deg)
