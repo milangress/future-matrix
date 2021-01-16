@@ -1,7 +1,7 @@
 <template lang="pug">
   a-entity(:rotation="rotation")
     a-entity(v-for="pos in barList")
-      a-box(:position='pos' depth="0.03" height="0.03" :width="barLength" :color='barColor')
+      a-box(:position='pos' depth="0.04" height="0.04" :width="barLength" :color='barColor')
 
 </template>
 
