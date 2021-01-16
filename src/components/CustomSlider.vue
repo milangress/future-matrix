@@ -51,11 +51,11 @@ export default {
 // Version 1.5.2
 // MIT License
 
-$track-color: #eceff1 !default
-$thumb-color: #607d8b !default
+$track-color: #ffffff !default
+$thumb-color: #ffffff !default
 
 $thumb-radius: 0px !default
-$thumb-height: 24px !default
+$thumb-height: 22px !default
 $thumb-width: 8px !default
 $thumb-shadow-size: 0px !default
 $thumb-shadow-blur: 4px !default
@@ -64,14 +64,14 @@ $thumb-border-width: 0px !default
 $thumb-border-color: #eceff1 !default
 
 $track-width: 100% !default
-$track-height: 8px !default
-$track-shadow-size: 1px !default
-$track-shadow-blur: 1px !default
+$track-height: 2px !default
+$track-shadow-size: 0px !default
+$track-shadow-blur: 0px !default
 $track-shadow-color: rgba(0, 0, 0, .2) !default
-$track-border-width: 2px !default
+$track-border-width: 0px !default
 $track-border-color: #cfd8dc !default
 
-$track-radius: 5px !default
+$track-radius: 0px !default
 $contrast: 5% !default
 
 $ie-bottom-track-color: darken($track-color, $contrast) !default
