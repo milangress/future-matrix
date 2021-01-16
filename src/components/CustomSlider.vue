@@ -94,7 +94,7 @@ export default {
 
 .textIsActive
   color: rgb(173, 107, 208)
-  text-shadow: 0px 0px 10px rgb(0, 0, 0)
+  // text-shadow: 1px 1px 2px rgb(0, 0, 0), 0px 0px 15px rgb(255, 255, 255)
 
 // Styling Cross-Browser Compatible Range Inputs with Sass
 // Github: https://github.com/darlanrod/input-range-sass
