@@ -231,16 +231,21 @@ export default {
 .wrapperChangePointQuestions
   grid-column 2 / span 8
   grid-row span 6 / -2
-  background rgba(173, 107, 208, 0.07);
-  backdrop-filter blur(10px)
+  background rgba(0, 0, 0, 0.8)
   border solid 2px rgba(173, 107, 208, 0.2)
-  background-clip padding-box
   box-shadow 10px 10px 10px rgba(173, 107, 208, 0.03)
   border-radius 1rem
   padding 1rem
   overflow scroll
   pointer-events all
   cursor default
+
+@supports ((-webkit-backdrop-filter: blur(10px)) or (backdrop-filter: blur(10px)))
+  .wrapperChangePointQuestions
+    background rgba(173, 107, 208, 0.07)
+    backdrop-filter blur(10px)
+    background-clip padding-box
+
 .wrapperChangePointQuestions.hidden
   display none
 .closeWindow
