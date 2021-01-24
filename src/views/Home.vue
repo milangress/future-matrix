@@ -40,15 +40,20 @@
       div.wrapperChangePointQuestions(v-bind:class="{hidden: questionWindowIsNOTVisible}")
         div.btn.closeWindow(v-on:click="toggleQuestionWindowIsVisible")
           img(src="/CloseWindow-X.svg" alt="hide Window" width="20px")
-        p ② Du Kannst auch selber bestimmen welchen Punkt du untersuchen möchtest:
+        p ② Du wachst auf – gestrandet in einer flimmernden Welt. Realitäten pulsieren ein und aus, überlagern sich, durchscheinend, weder überzeugend echt noch völlig virtuell. Um in diesem liminalen Raum zu überleben, besteht deine einzige Hoffnung darin, für dich selbst und für andere eine neue Bedeutung zu erschaffen. Wenn du in einem anderen Szenario aufwachen möchtest, kannst du hier den Punkt auch verschieben:
         div.changePoint
           custom-slider.slider(min="-9" max="9" step="1" v-model="pointPosition.x" :leftText="xAxis[1]" :rightText="xAxis[0]")
           custom-slider.slider(min="-9" max="9" step="1" v-model="pointPosition.z" :leftText="yAxis[0]" :rightText="yAxis[1]")
           custom-slider.slider(min="-9" max="9" step="1" v-model="pointPosition.y" :leftText="zAxis[1]" :rightText="zAxis[0]")
-        p ③ Anschließend kannst du die Fragen und Aufgaben zum Brainstorming benutzen und dir gedanken zu deinem Szenario machen:
+        p ③ Anschließend musst du dir deine eigene Bedeutung schaffen… Diese Fragen und Aufgaben können dir helfen dein Szenario besser zu verstehen:
         p.questions {{questions[0]}}
         div.btn.nextQuestionBtn(v-on:click="newQuestion") Nächste Frage…
-        p ④ weiter auf der seite… ((TODO: Text schreiben))
+        p ④ Wenn du nicht mehr weißt, wo du bist, kannst du auch die
+          |
+          |
+          a(href='https://faas-machine.vercel.app/gen/1MuXLBM_WGHm9vS_jhAtDVKHGDK9FJ171fpkqwBXJIKU') FaaS-Maschine
+          |
+          | benutzen.
 </template>
 
 // TODO: Text schreiben
@@ -229,8 +234,8 @@ export default {
   //grid-auto-rows: fit-content(1em)
   pointer-events none
 .wrapperChangePointQuestions
-  grid-column 2 / span 8
-  grid-row span 6 / -2
+  grid-column 2 / span 9
+  grid-row span 7 / -2
   background rgba(0, 0, 0, 0.8)
   border solid 2px rgba(173, 107, 208, 0.2)
   box-shadow 10px 10px 10px rgba(173, 107, 208, 0.03)
