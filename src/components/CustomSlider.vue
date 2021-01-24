@@ -142,7 +142,7 @@ $ie-bottom-track-color: darken($track-color, $contrast) !default
   border: $thumb-border-width solid $thumb-border-color
   border-radius: $thumb-radius
   box-sizing: border-box
-  cursor: default
+  cursor: grab
   height: $thumb-height
   width: $thumb-width
 
