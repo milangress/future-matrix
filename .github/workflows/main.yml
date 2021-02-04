@@ -8,11 +8,11 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: '12'
-      - name: "Installing project dependencies"
-      - run: npm install
-      - name: "Building the project"
-      - run: npm run build
-      - name: "publish"
+      - name: Installing project dependencies
+        run: npm install
+      - name: Building the project
+        run: npm run build
+      - name: publish
         run: |
           npx @getmeli/cli@next upload \
             ./dist \
