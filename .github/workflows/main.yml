@@ -18,8 +18,7 @@ jobs:
             ./dist \
             --url "https://dev.wwwwww.space" \
             --site "3c3d3ced-bf0a-42cf-8cf0-473a955d29fc" \
-            --release "$GITHUB_SHA" \ 
-            --token "$MELI_TOKEN"
+            --release "$GITHUB_SHA" --token "$MELI_TOKEN"
         env:
           MELI_TOKEN: ${{ secrets.MELI_TOKEN }}
           # using default GITHUB_TOKEN set by Github Actions
