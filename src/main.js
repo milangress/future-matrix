@@ -28,7 +28,10 @@ const app = createApp(App)
   .use(router)
   .use(store)
   .use(QuerySynchronizer, {
-    router: router
+    router: router,
+    navigationOperation: (query, router) => {
+      return 'replace'
+    }
   })
 
 // app.config.isCustomElement = tag => tag.startsWith('a-')
