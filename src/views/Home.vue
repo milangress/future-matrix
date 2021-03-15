@@ -54,6 +54,7 @@
         a(href='https://faas-machine.vercel.app/gen/1MuXLBM_WGHm9vS_jhAtDVKHGDK9FJ171fpkqwBXJIKU') FaaS-Maschine
         |
         | benutzen.
+      p Aktuell sind {{numberOfPossibleMatrixes}} verschiedene Matrizes möglich
 </template>
 
 // TODO: Text schreiben
@@ -216,6 +217,13 @@ export default {
     }
   },
   computed: {
+    numberOfPossibleMatrixes: function () {
+      if (this.wordPairs.xAxis) {
+        return this.wordPairs.xAxis.length * this.wordPairs.yAxis.length * this.wordPairs.zAxis.length
+      } else {
+        return 0
+      }
+    },
     animatedPointPosition: function () {
       return {
         x: this.tweenedPointPosition.x.toFixed(2),
