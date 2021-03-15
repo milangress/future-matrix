@@ -11,6 +11,7 @@
 <script>
 export default {
   name: 'CustomSlider',
+  emits: ['input', 'change'],
   props: {
     leftText: {
       type: String,
@@ -21,7 +22,7 @@ export default {
       default: 'right'
     },
     value: {
-      required: false,
+      required: true,
       default: ''
     }
   },
@@ -36,10 +37,10 @@ export default {
       this.update()
     },
     update () {
-      this.$emit('input', this.sliderValue)
+      this.$emit('update:value', parseInt(this.sliderValue))
     },
     change () {
-      this.$emit('change', this.sliderValue)
+      this.$emit('change:value', parseInt(this.sliderValue))
     }
   },
   computed: {

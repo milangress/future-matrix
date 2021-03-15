@@ -42,9 +42,9 @@
         img(src="/CloseWindow-X.svg" alt="hide Window" width="20px")
       p ② Du wachst auf – gestrandet in einer flimmernden Welt. Realitäten pulsieren ein und aus, überlagern sich, durchscheinend, weder überzeugend echt noch völlig virtuell. Um in diesem liminalen Raum zu überleben, besteht deine einzige Hoffnung darin, für dich selbst und für andere eine neue Bedeutung zu erschaffen. Wenn du in einem anderen Szenario aufwachen möchtest, kannst du hier den Punkt auch verschieben:
       div.changePoint
-        custom-slider.slider(min="-9" max="9" step="1" v-model="pointPosition.x" :leftText="xAxis[1]" :rightText="xAxis[0]")
-        custom-slider.slider(min="-9" max="9" step="1" v-model="pointPosition.z" :leftText="yAxis[0]" :rightText="yAxis[1]")
-        custom-slider.slider(min="-9" max="9" step="1" v-model="pointPosition.y" :leftText="zAxis[1]" :rightText="zAxis[0]")
+        custom-slider.slider(min="-9" max="9" step="1" v-model:value="pointPosition.x" :leftText="xAxis[1]" :rightText="xAxis[0]")
+        custom-slider.slider(min="-9" max="9" step="1" v-model:value="pointPosition.z" :leftText="yAxis[0]" :rightText="yAxis[1]")
+        custom-slider.slider(min="-9" max="9" step="1" v-model:value="pointPosition.y" :leftText="zAxis[1]" :rightText="zAxis[0]")
       p ③ Anschließend musst du dir deine eigene Bedeutung schaffen… Diese Fragen und Aufgaben können dir helfen dein Szenario besser zu verstehen:
       p.questions {{questions[0]}}
       div.btn.nextQuestionBtn(v-on:click="newQuestion") Nächste Frage…
