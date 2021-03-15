@@ -15,6 +15,7 @@
     "aframe-text-geometry-component": "^0.5.1",
     "core-js": "^3.8.2",
     "gsap": "^3.6.0",
+    "three-bmfont-text": "^2.3.0",
     "vue": "^3.0.0-beta.1",
     "vue-router": "^4.0.0-alpha.6",
     "vuex": "^4.0.0-alpha.1"
