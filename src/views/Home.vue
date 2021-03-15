@@ -2,7 +2,7 @@
 <template lang="pug">
 .home
   .aframe-matrix
-    a-scene(embedded vr-mode-ui="enabled: false")
+    a-scene(embedded vr-mode-ui="enabled: false" loading-screen="dotsColor: white; backgroundColor: black")
       a-assets
         //a-asset-item(id="helixA" src="/helix-simplified-A.glb")
         //a-asset-item(id="helixB" src="/helix-simplified-B.glb")
