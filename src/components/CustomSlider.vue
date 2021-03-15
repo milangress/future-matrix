@@ -3,15 +3,14 @@
   span(v-bind:class="leftTextActive") {{leftText}}
   input(type="range" min="-9" max="9"
        v-model="sliderValue"
-       @input="update"
-       @change="change")
+       @input="update")
   span(v-bind:class="rightTextActive") {{rightText}}
 </template>
 
 <script>
 export default {
   name: 'CustomSlider',
-  emits: ['input', 'change'],
+  emits: ['update:value'],
   props: {
     leftText: {
       type: String,
@@ -38,9 +37,6 @@ export default {
     },
     update () {
       this.$emit('update:value', parseInt(this.sliderValue))
-    },
-    change () {
-      this.$emit('change:value', parseInt(this.sliderValue))
     }
   },
   computed: {
