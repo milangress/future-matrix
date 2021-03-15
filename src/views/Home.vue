@@ -160,7 +160,7 @@ export default {
     newQuestion: function () {
       const newQuestion = this.shuffleArray(this.questions)
       console.log('newQuestion')
-      this.$set(this, 'questions', newQuestion)
+      this.questions = newQuestion
     },
     startNewWordPairs: function () {
       const that = this
