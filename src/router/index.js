@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 // import { query } from '@oarepo/vue-query-synchronizer'
+// reset
 
 const routes = [
   {
