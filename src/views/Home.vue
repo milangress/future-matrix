@@ -129,22 +129,22 @@ export default {
         const sheetData = await fetch(sheetURL).then(response => response.json())
         const entries = sheetData.feed.entry.filter(entry => entry.gs$cell.row !== '1')
 
-        const alphaSideX = entries.filter(entry => entry.gs$cell.col === '1').map(entry => entry.content.$t)
-        const omegaSideX = entries.filter(entry => entry.gs$cell.col === '2').map(entry => entry.content.$t)
+        const alphaSideX = entries.filter(entry => entry.gs$cell.col === '1').map(entry => entry.content.$t.trim())
+        const omegaSideX = entries.filter(entry => entry.gs$cell.col === '2').map(entry => entry.content.$t.trim())
         const bothSidesMergedX = alphaSideX.map((entry, index) => {
           return [entry, omegaSideX[index]]
         })
         this.wordPairs.xAxis = this.shuffleArray(bothSidesMergedX)
 
-        const alphaSideY = entries.filter(entry => entry.gs$cell.col === '3').map(entry => entry.content.$t)
-        const omegaSideY = entries.filter(entry => entry.gs$cell.col === '4').map(entry => entry.content.$t)
+        const alphaSideY = entries.filter(entry => entry.gs$cell.col === '3').map(entry => entry.content.$t.trim())
+        const omegaSideY = entries.filter(entry => entry.gs$cell.col === '4').map(entry => entry.content.$t.trim())
         const bothSidesMergedY = alphaSideY.map((entry, index) => {
           return [entry, omegaSideY[index]]
         })
         this.wordPairs.yAxis = this.shuffleArray(bothSidesMergedY)
 
-        const alphaSideZ = entries.filter(entry => entry.gs$cell.col === '5').map(entry => entry.content.$t)
-        const omegaSideZ = entries.filter(entry => entry.gs$cell.col === '6').map(entry => entry.content.$t)
+        const alphaSideZ = entries.filter(entry => entry.gs$cell.col === '5').map(entry => entry.content.$t.trim())
+        const omegaSideZ = entries.filter(entry => entry.gs$cell.col === '6').map(entry => entry.content.$t.trim())
         const bothSidesMergedZ = alphaSideZ.map((entry, index) => {
           return [entry, omegaSideZ[index]]
         })
