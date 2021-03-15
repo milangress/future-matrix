@@ -84,6 +84,11 @@ export default {
       yAxis: ['Transparenz', 'Opazität'],
       zAxis: ['Berührung', 'Virtualität'],
       allWordPairs: Array,
+      wordPairs: {
+        xAxis: undefined,
+        yAxis: undefined,
+        zAxis: undefined
+      },
       barColor: '#fea421', // Old Bar: '#ad6bd0' old Sky: #726042
       helixIsVisible: false,
       questionWindowIsNOTVisible: true,
@@ -116,13 +121,27 @@ export default {
       try {
         const sheetData = await fetch(sheetURL).then(response => response.json())
         const entries = sheetData.feed.entry.filter(entry => entry.gs$cell.row !== '1')
-        const AlphaSide = entries.filter(entry => entry.gs$cell.col === '1').map(entry => entry.content.$t)
-        const OmegaSide = entries.filter(entry => entry.gs$cell.col === '2').map(entry => entry.content.$t)
-        const bothSidesMerged = AlphaSide.map((entry, index) => {
-          return [entry, OmegaSide[index]]
+
+        const alphaSideX = entries.filter(entry => entry.gs$cell.col === '1').map(entry => entry.content.$t)
+        const omegaSideX = entries.filter(entry => entry.gs$cell.col === '2').map(entry => entry.content.$t)
+        const bothSidesMergedX = alphaSideX.map((entry, index) => {
+          return [entry, omegaSideX[index]]
         })
-        this.allWordPairs = this.shuffleArray(bothSidesMerged)
-        console.log(`successfully loaded ${bothSidesMerged.length} axes`)
+        this.wordPairs.xAxis = this.shuffleArray(bothSidesMergedX)
+
+        const alphaSideY = entries.filter(entry => entry.gs$cell.col === '3').map(entry => entry.content.$t)
+        const omegaSideY = entries.filter(entry => entry.gs$cell.col === '4').map(entry => entry.content.$t)
+        const bothSidesMergedY = alphaSideY.map((entry, index) => {
+          return [entry, omegaSideY[index]]
+        })
+        this.wordPairs.yAxis = this.shuffleArray(bothSidesMergedY)
+
+        const alphaSideZ = entries.filter(entry => entry.gs$cell.col === '5').map(entry => entry.content.$t)
+        const omegaSideZ = entries.filter(entry => entry.gs$cell.col === '6').map(entry => entry.content.$t)
+        const bothSidesMergedZ = alphaSideZ.map((entry, index) => {
+          return [entry, omegaSideZ[index]]
+        })
+        this.wordPairs.zAxis = this.shuffleArray(bothSidesMergedZ)
       } catch (err) {
         console.error(err)
       }
@@ -160,10 +179,9 @@ export default {
       }, 1000)
     },
     newWordPairs: function () {
-      const shuffledWordPairs = this.shuffleArray(this.allWordPairs)
-      this.$set(this, 'xAxis', shuffledWordPairs[0])
-      this.$set(this, 'yAxis', shuffledWordPairs[1])
-      this.$set(this, 'zAxis', shuffledWordPairs[2])
+      this.$set(this, 'xAxis', this.shuffleArray(this.wordPairs.xAxis)[0])
+      this.$set(this, 'yAxis', this.shuffleArray(this.wordPairs.yAxis)[0])
+      this.$set(this, 'zAxis', this.shuffleArray(this.wordPairs.zAxis)[0])
       // this.$set(this, 'barColor', `rgb(${Math.random() * 255},${Math.random() * 255},${Math.random() * 255})`)
       const randomColor = Math.floor(Math.random() * 16777215).toString(16)
       this.barColor = `#${randomColor}`
