@@ -1,13 +1,13 @@
 <template lang="pug">
-  a-entity
-    a-box.spaceBox(position='-5 5 5' depth="9.3" height="9.3" width="9.3" mixin="SpaceBox")
-    a-box.spaceBox(position='5 5 5' depth="9.3" height="9.3" width="9.3" mixin="SpaceBox")
-    a-box.spaceBox(position='-5 -5 5' depth="9.3" height="9.3" width="9.3" mixin="SpaceBox")
-    a-box.spaceBox(position='-5 -5 -5' depth="9.3" height="9.3" width="9.3" mixin="SpaceBox")
-    a-box.spaceBox(position='5 -5 -5' depth="9.3" height="9.3" width="9.3" mixin="SpaceBox")
-    a-box.spaceBox(position='5 5 -5' depth="9.3" height="9.3" width="9.3" mixin="SpaceBox")
-    a-box.spaceBox(position='-5 5 -5' depth="9.3" height="9.3" width="9.3" mixin="SpaceBox")
-    a-box.spaceBox(position='5 -5 5' depth="9.3" height="9.3" width="9.3" mixin="SpaceBox")
+a-entity
+  a-box.spaceBox(position='-5 5 5' depth="9.3" height="9.3" width="9.3" mixin="SpaceBox")
+  a-box.spaceBox(position='5 5 5' depth="9.3" height="9.3" width="9.3" mixin="SpaceBox")
+  a-box.spaceBox(position='-5 -5 5' depth="9.3" height="9.3" width="9.3" mixin="SpaceBox")
+  a-box.spaceBox(position='-5 -5 -5' depth="9.3" height="9.3" width="9.3" mixin="SpaceBox")
+  a-box.spaceBox(position='5 -5 -5' depth="9.3" height="9.3" width="9.3" mixin="SpaceBox")
+  a-box.spaceBox(position='5 5 -5' depth="9.3" height="9.3" width="9.3" mixin="SpaceBox")
+  a-box.spaceBox(position='-5 5 -5' depth="9.3" height="9.3" width="9.3" mixin="SpaceBox")
+  a-box.spaceBox(position='5 -5 5' depth="9.3" height="9.3" width="9.3" mixin="SpaceBox")
 </template>
 
 <script>

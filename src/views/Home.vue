@@ -1,59 +1,59 @@
 /*jshint -W109 */
 <template lang="pug">
-  .home
-    .aframe-matrix
-      a-scene(embedded vr-mode-ui="enabled: false")
-        a-assets
-          //a-asset-item(id="helixA" src="/helix-simplified-A.glb")
-          //a-asset-item(id="helixB" src="/helix-simplified-B.glb")
-          img(id="SpaceBoxTextur" src="/SpaceBoxTextur.png")
-          // a-mixin(id="SpaceBox"
-            material="shader: flat; side: double; depthTest: false; color: #000; transparent: true; opacity: 0.03"
-            animation__mouseenter="property: components.material.material.color; type: color; to: white; startEvents: mouseenter; dur: 200"
-            animation__mouseleave="property: components.material.material.color; type: color; to: #000; startEvents: mouseleave; dur: 200"
-            aabb-collider="objects: #point;")
-          a-mixin(id="SpaceBox"
-            material="shader: flat; side: double; depthTest: false; color: #000; transparent: true; opacity: 0"
-            aabb-collider="objects: #point;")
-        a-entity#mainAxis(animation="startEvents: startRotating; easing:easeOutElastic; property:rotation; from:0 0 0; to:0 1080 0; dur: 1700; loop:false")
-          horizontal-axis(:leftTxt="xAxis[0]" :rightTxt="xAxis[1]" :barColor="barColor")
-          horizontal-axis(rotation="0 90 0" :leftTxt="yAxis[0]" :rightTxt="yAxis[1]" :barColor="barColor")
-          vertical-axis(:leftTxt="zAxis[0]" :rightTxt="zAxis[1]" :barColor="barColor")
-          SpaceBoxes
-          a-sky(color='#000' animation="startEvents: changeSky; property: color; from: #ffffff; to: #000; dir:alternate;")
-          a-entity#point(:position="animatedPointPositionString" data-aabb-collider-dynamic="true" aabb-collider="objects: .spaceBox;")
-            a-entity(light="color: blue; intensity: 2.8; type: point; distance: 40; decay: 5" position="0 0 0")
-            a-sphere(v-on:click="newRandomPoint" position="0 0 0" color="blue" radius="0.3")
-          a-entity(v-if="helixIsVisible") <!--animation="easing:linear; property:rotation; from:0 0 0; to:0 360 0; dur: 17000; loop:true"-->
-            a-gltf-model(:visible="helixIsVisible" src="#helixA")
-            a-gltf-model(:visible="helixIsVisible" src="#helixB")
-        a-entity(light="type: ambient; color: #BBB")
-        a-entity(light="type: directional; color: #FFF; intensity: 0.6" position="-0.5 1 1")
-        a-entity(camera="fov: 30" look-controls orbit-controls="target: 0 0 0; minDistance: 0.5; maxDistance: 180; initialPosition: 30 15 45: dampingFactor: 0.3")
-        a-entity(cursor='rayOrigin: mouse' raycaster="objects: .clickable")
-    .interface
-      div.btn.newPoint
-        div.newPointInner(v-on:click="newRandomPoint") 【1】 Zufälliger Punkt
-      div.newWords.btn(v-on:click="startNewWordPairs") Zufällige Achsen
-      //div.hideHelix.btn(v-on:click="toggleHelixVisibility")
-      div.btn.openQuestionWindow(v-on:click="toggleQuestionWindowIsVisible" v-bind:class="{hidden: !questionWindowIsNOTVisible}") ②
-      div.wrapperChangePointQuestions(v-bind:class="{hidden: questionWindowIsNOTVisible}")
-        div.btn.closeWindow(v-on:click="toggleQuestionWindowIsVisible")
-          img(src="/CloseWindow-X.svg" alt="hide Window" width="20px")
-        p ② Du wachst auf – gestrandet in einer flimmernden Welt. Realitäten pulsieren ein und aus, überlagern sich, durchscheinend, weder überzeugend echt noch völlig virtuell. Um in diesem liminalen Raum zu überleben, besteht deine einzige Hoffnung darin, für dich selbst und für andere eine neue Bedeutung zu erschaffen. Wenn du in einem anderen Szenario aufwachen möchtest, kannst du hier den Punkt auch verschieben:
-        div.changePoint
-          custom-slider.slider(min="-9" max="9" step="1" v-model="pointPosition.x" :leftText="xAxis[1]" :rightText="xAxis[0]")
-          custom-slider.slider(min="-9" max="9" step="1" v-model="pointPosition.z" :leftText="yAxis[0]" :rightText="yAxis[1]")
-          custom-slider.slider(min="-9" max="9" step="1" v-model="pointPosition.y" :leftText="zAxis[1]" :rightText="zAxis[0]")
-        p ③ Anschließend musst du dir deine eigene Bedeutung schaffen… Diese Fragen und Aufgaben können dir helfen dein Szenario besser zu verstehen:
-        p.questions {{questions[0]}}
-        div.btn.nextQuestionBtn(v-on:click="newQuestion") Nächste Frage…
-        p ④ Wenn du nicht mehr weißt, wo du bist, kannst du auch die
-          |
-          |
-          a(href='https://faas-machine.vercel.app/gen/1MuXLBM_WGHm9vS_jhAtDVKHGDK9FJ171fpkqwBXJIKU') FaaS-Maschine
-          |
-          | benutzen.
+.home
+  .aframe-matrix
+    a-scene(embedded vr-mode-ui="enabled: false")
+      a-assets
+        //a-asset-item(id="helixA" src="/helix-simplified-A.glb")
+        //a-asset-item(id="helixB" src="/helix-simplified-B.glb")
+        img(id="SpaceBoxTextur" src="/SpaceBoxTextur.png")
+        // a-mixin(id="SpaceBox"
+          material="shader: flat; side: double; depthTest: false; color: #000; transparent: true; opacity: 0.03"
+          animation__mouseenter="property: components.material.material.color; type: color; to: white; startEvents: mouseenter; dur: 200"
+          animation__mouseleave="property: components.material.material.color; type: color; to: #000; startEvents: mouseleave; dur: 200"
+          aabb-collider="objects: #point;")
+        a-mixin(id="SpaceBox"
+          material="shader: flat; side: double; depthTest: false; color: #000; transparent: true; opacity: 0"
+          aabb-collider="objects: #point;")
+      a-entity#mainAxis(animation="startEvents: startRotating; easing:easeOutElastic; property:rotation; from:0 0 0; to:0 1080 0; dur: 1700; loop:false")
+        horizontal-axis(:leftTxt="xAxis[0]" :rightTxt="xAxis[1]" :barColor="barColor")
+        horizontal-axis(rotation="0 90 0" :leftTxt="yAxis[0]" :rightTxt="yAxis[1]" :barColor="barColor")
+        vertical-axis(:leftTxt="zAxis[0]" :rightTxt="zAxis[1]" :barColor="barColor")
+        SpaceBoxes
+        a-sky(color='#000' animation="startEvents: changeSky; property: color; from: #ffffff; to: #000; dir:alternate;")
+        a-entity#point(:position="animatedPointPositionString" data-aabb-collider-dynamic="true" aabb-collider="objects: .spaceBox;")
+          a-entity(light="color: blue; intensity: 2.8; type: point; distance: 40; decay: 5" position="0 0 0")
+          a-sphere(v-on:click="newRandomPoint" position="0 0 0" color="blue" radius="0.3")
+        a-entity(v-if="helixIsVisible") <!--animation="easing:linear; property:rotation; from:0 0 0; to:0 360 0; dur: 17000; loop:true"-->
+          a-gltf-model(:visible="helixIsVisible" src="#helixA")
+          a-gltf-model(:visible="helixIsVisible" src="#helixB")
+      a-entity(light="type: ambient; color: #BBB")
+      a-entity(light="type: directional; color: #FFF; intensity: 0.6" position="-0.5 1 1")
+      a-entity(camera="fov: 30" look-controls orbit-controls="target: 0 0 0; minDistance: 0.5; maxDistance: 180; initialPosition: 30 15 45: dampingFactor: 0.3")
+      a-entity(cursor='rayOrigin: mouse' raycaster="objects: .clickable")
+  .interface
+    div.btn.newPoint
+      div.newPointInner(v-on:click="newRandomPoint") 【1】 Zufälliger Punkt
+    div.newWords.btn(v-on:click="startNewWordPairs") Zufällige Achsen
+    //div.hideHelix.btn(v-on:click="toggleHelixVisibility")
+    div.btn.openQuestionWindow(v-on:click="toggleQuestionWindowIsVisible" v-bind:class="{hidden: !questionWindowIsNOTVisible}") ②
+    div.wrapperChangePointQuestions(v-bind:class="{hidden: questionWindowIsNOTVisible}")
+      div.btn.closeWindow(v-on:click="toggleQuestionWindowIsVisible")
+        img(src="/CloseWindow-X.svg" alt="hide Window" width="20px")
+      p ② Du wachst auf – gestrandet in einer flimmernden Welt. Realitäten pulsieren ein und aus, überlagern sich, durchscheinend, weder überzeugend echt noch völlig virtuell. Um in diesem liminalen Raum zu überleben, besteht deine einzige Hoffnung darin, für dich selbst und für andere eine neue Bedeutung zu erschaffen. Wenn du in einem anderen Szenario aufwachen möchtest, kannst du hier den Punkt auch verschieben:
+      div.changePoint
+        custom-slider.slider(min="-9" max="9" step="1" v-model="pointPosition.x" :leftText="xAxis[1]" :rightText="xAxis[0]")
+        custom-slider.slider(min="-9" max="9" step="1" v-model="pointPosition.z" :leftText="yAxis[0]" :rightText="yAxis[1]")
+        custom-slider.slider(min="-9" max="9" step="1" v-model="pointPosition.y" :leftText="zAxis[1]" :rightText="zAxis[0]")
+      p ③ Anschließend musst du dir deine eigene Bedeutung schaffen… Diese Fragen und Aufgaben können dir helfen dein Szenario besser zu verstehen:
+      p.questions {{questions[0]}}
+      div.btn.nextQuestionBtn(v-on:click="newQuestion") Nächste Frage…
+      p ④ Wenn du nicht mehr weißt, wo du bist, kannst du auch die
+        |
+        |
+        a(href='https://faas-machine.vercel.app/gen/1MuXLBM_WGHm9vS_jhAtDVKHGDK9FJ171fpkqwBXJIKU') FaaS-Maschine
+        |
+        | benutzen.
 </template>
 
 // TODO: Text schreiben

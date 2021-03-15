@@ -1,4 +1,4 @@
-import Vue from 'vue'
+import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
@@ -8,9 +8,7 @@ require('aframe-orbit-controls')
 require('aframe-text-geometry-component')
 require('aframe-aabb-collider-component')
 
-Vue.config.productionTip = false
-
-Vue.config.ignoredElements = [
+/* App.config.isCustomElement = [
   'a-scene',
   'a-entity',
   'a-camera',
@@ -23,10 +21,10 @@ Vue.config.ignoredElements = [
   'a-sphere',
   'a-gltf-model',
   'a-asset-item'
-]
+] */
 
-new Vue({
-  router,
-  store,
-  render: h => h(App)
-}).$mount('#app')
+const app = createApp(App).use(router).use(store)
+
+// app.config.isCustomElement = tag => tag.startsWith('a-')
+
+app.mount('#app')

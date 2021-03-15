@@ -1,11 +1,11 @@
 <template lang="pug">
-  .sliderWrapper
-    span(v-bind:class="leftTextActive") {{leftText}}
-    input(type="range" min="-9" max="9"
-         v-model="sliderValue"
-         @input="update"
-         @change="change")
-    span(v-bind:class="rightTextActive") {{rightText}}
+.sliderWrapper
+  span(v-bind:class="leftTextActive") {{leftText}}
+  input(type="range" min="-9" max="9"
+       v-model="sliderValue"
+       @input="update"
+       @change="change")
+  span(v-bind:class="rightTextActive") {{rightText}}
 </template>
 
 <script>
