@@ -2,6 +2,7 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import QuerySynchronizer from '@oarepo/vue-query-synchronizer'
 
 require('aframe')
 require('aframe-orbit-controls')
@@ -23,7 +24,12 @@ require('aframe-aabb-collider-component')
   'a-asset-item'
 ] */
 
-const app = createApp(App).use(router).use(store)
+const app = createApp(App)
+  .use(router)
+  .use(store)
+  .use(QuerySynchronizer, {
+    router: router
+  })
 
 // app.config.isCustomElement = tag => tag.startsWith('a-')
 

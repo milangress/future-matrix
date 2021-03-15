@@ -1,10 +1,23 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
+// import { query } from '@oarepo/vue-query-synchronizer'
 
 const routes = [
   {
     path: '/',
     name: 'Home',
+    meta: {
+      query: {
+        page: 'int:1',
+        point: 'array:',
+        x: 'int:0',
+        y: 'int:0',
+        z: 'int:0',
+        yAxis: 'commaarray:Transparenz,Opazität',
+        xAxis: 'commaarray:Natur über Mensch,Mensch über Natur',
+        zAxis: 'commaarray:Berührung,Virtualität'
+      }
+    },
     component: Home
   },
   {

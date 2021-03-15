@@ -16,9 +16,9 @@
           material="shader: flat; side: double; depthTest: false; color: #000; transparent: true; opacity: 0"
           aabb-collider="objects: #point;")
       a-entity#mainAxis(animation="startEvents: startRotating; easing:easeOutElastic; property:rotation; from:0 0 0; to:0 1080 0; dur: 1700; loop:false")
-        horizontal-axis(:leftTxt="xAxis[0]" :rightTxt="xAxis[1]" :barColor="barColor")
-        horizontal-axis(rotation="0 90 0" :leftTxt="yAxis[0]" :rightTxt="yAxis[1]" :barColor="barColor")
-        vertical-axis(:leftTxt="zAxis[0]" :rightTxt="zAxis[1]" :barColor="barColor")
+        horizontal-axis(:leftTxt="query.xAxis[0]" :rightTxt="query.xAxis[1]" :barColor="barColor")
+        horizontal-axis(rotation="0 90 0" :leftTxt="query.yAxis[0]" :rightTxt="query.yAxis[1]" :barColor="barColor")
+        vertical-axis(:leftTxt="query.zAxis[0]" :rightTxt="query.zAxis[1]" :barColor="barColor")
         SpaceBoxes
         a-sky(color='#000' animation="startEvents: changeSky; property: color; from: #ffffff; to: #000; dir:alternate;")
         a-entity#point(:position="animatedPointPositionString" data-aabb-collider-dynamic="true" aabb-collider="objects: .spaceBox;")
@@ -66,6 +66,7 @@ import VerticalAxis from '@/components/VerticalAxis'
 import SpaceBoxes from '@/components/SpaceBoxes'
 import gsap from 'gsap'
 import CustomSlider from '@/components/CustomSlider'
+import { useQuery } from '@oarepo/vue-query-synchronizer'
 
 const sheetURL = 'https://spreadsheets.google.com/feeds/cells/1LwSUWGNRwzb_5nKIQfBJTAt8Jq5C99Pu9bJSuWjdxio/1/public/full?alt=json'
 const sheetURLQuestions = 'https://spreadsheets.google.com/feeds/cells/1LwSUWGNRwzb_5nKIQfBJTAt8Jq5C99Pu9bJSuWjdxio/2/public/full?alt=json'
@@ -77,6 +78,11 @@ export default {
     VerticalAxis,
     SpaceBoxes,
     CustomSlider
+  },
+  setup () {
+    return {
+      query: useQuery()
+    }
   },
   data () {
     return {
@@ -174,14 +180,16 @@ export default {
         that.newWordPairs()
       }, 3)
       window.setTimeout(() => {
+        this.query.xAxis = this.shuffleArray(this.wordPairs.xAxis)[0]
+        this.query.yAxis = this.shuffleArray(this.wordPairs.yAxis)[0]
+        this.query.zAxis = this.shuffleArray(this.wordPairs.zAxis)[0]
+      }, 700)
+      window.setTimeout(() => {
         clearInterval(mainLoopId)
         this.barColor = originalBarColor
       }, 1000)
     },
     newWordPairs: function () {
-      this.xAxis = this.shuffleArray(this.wordPairs.xAxis)[0]
-      this.yAxis = this.shuffleArray(this.wordPairs.yAxis)[0]
-      this.zAxis = this.shuffleArray(this.wordPairs.zAxis)[0]
       // this.$set(this, 'barColor', `rgb(${Math.random() * 255},${Math.random() * 255},${Math.random() * 255})`)
       const randomColor = Math.floor(Math.random() * 16777215).toString(16)
       this.barColor = `#${randomColor}`
