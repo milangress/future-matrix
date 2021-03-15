@@ -150,6 +150,7 @@ export default {
           return [entry, omegaSideZ[index]]
         })
         this.wordPairs.zAxis = this.shuffleArray(bothSidesMergedZ)
+        console.log(this.wordPairs)
       } catch (err) {
         console.error(err)
       }
