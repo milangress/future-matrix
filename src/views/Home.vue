@@ -70,7 +70,7 @@ import gsap from 'gsap'
 import CustomSlider from '@/components/CustomSlider'
 import { useQuery } from '@oarepo/vue-query-synchronizer'
 
-const sheetURL = 'https://spreadsheets.google.com/feeds/cells/1LwSUWGNRwzb_5nKIQfBJTAt8Jq5C99Pu9bJSuWjdxio/1/public/full?alt=json'
+const sheetURL = 'https://sheets.googleapis.com/v4/spreadsheets/1LwSUWGNRwzb_5nKIQfBJTAt8Jq5C99Pu9bJSuWjdxio/values/Wortpaare!A1:F1001?majorDimension=COLUMNS&key=AIzaSyB2vKMMSjRWVW1CJQby6-ZyfyHqJOH5zZM'
 const sheetURLQuestions = 'https://spreadsheets.google.com/feeds/cells/1LwSUWGNRwzb_5nKIQfBJTAt8Jq5C99Pu9bJSuWjdxio/2/public/full?alt=json'
 
 export default {
@@ -128,32 +128,27 @@ export default {
     loadSheet: async function () {
       try {
         const sheetData = await fetch(sheetURL).then(response => response.json())
-        const entries = sheetData.feed.entry.filter(entry => entry.gs$cell.row !== '1')
+        const values = sheetData.values
+          .map(column => column.slice(1)) // Remove first line (headline)
+          .map(column => column.map(value => value.trim())) // Remove whitespace
 
-        const alphaSideX = entries.filter(entry => entry.gs$cell.col === '1').map(entry => entry.content.$t.trim())
-        const omegaSideX = entries.filter(entry => entry.gs$cell.col === '2').map(entry => entry.content.$t.trim())
-        const bothSidesMergedX = alphaSideX.map((entry, index) => {
-          return [entry, omegaSideX[index]]
-        })
-        this.wordPairs.xAxis = this.shuffleArray(bothSidesMergedX)
+        console.log(values)
+        this.wordPairs.xAxis = this.mergeColumns(values[0], values[1])
+        console.log(this.wordPairs.xAxis)
+        this.wordPairs.yAxis = this.mergeColumns(values[2], values[3])
+        console.log(this.wordPairs.yAxis)
+        this.wordPairs.zAxis = this.mergeColumns(values[4], values[5])
+        console.log(this.wordPairs.zAxis)
 
-        const alphaSideY = entries.filter(entry => entry.gs$cell.col === '3').map(entry => entry.content.$t.trim())
-        const omegaSideY = entries.filter(entry => entry.gs$cell.col === '4').map(entry => entry.content.$t.trim())
-        const bothSidesMergedY = alphaSideY.map((entry, index) => {
-          return [entry, omegaSideY[index]]
-        })
-        this.wordPairs.yAxis = this.shuffleArray(bothSidesMergedY)
-
-        const alphaSideZ = entries.filter(entry => entry.gs$cell.col === '5').map(entry => entry.content.$t.trim())
-        const omegaSideZ = entries.filter(entry => entry.gs$cell.col === '6').map(entry => entry.content.$t.trim())
-        const bothSidesMergedZ = alphaSideZ.map((entry, index) => {
-          return [entry, omegaSideZ[index]]
-        })
-        this.wordPairs.zAxis = this.shuffleArray(bothSidesMergedZ)
         console.log(this.wordPairs)
       } catch (err) {
         console.error(err)
       }
+    },
+    mergeColumns: function (firstArray, secondArray) {
+      return firstArray.map((entry, index) => {
+        return [entry, secondArray[index]]
+      })
     },
     loadSheetQuestions: async function () {
       try {
