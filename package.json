@@ -38,8 +38,8 @@
     "sass": "^1.49.0",
     "sass-loader": "^10.2.1",
     "stylus": "^0.56.0",
-    "stylus-loader": "^3.0.2",
-    "vue-cli-plugin-pug": "~1.0.7",
+    "stylus-loader": "^6.2.0",
+    "vue-cli-plugin-pug": "~2.0.0",
     "vue-loader": "^16.8.3",
     "vue-template-compiler": "^2.6.14"
   }
