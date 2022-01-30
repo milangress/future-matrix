@@ -2,7 +2,7 @@
 <template lang="pug">
 .home
   .aframe-matrix
-    a-scene(embedded vr-mode-ui="enabled: false" loading-screen="dotsColor: white; backgroundColor: black")
+    a-scene(embedded vr-mode-ui="enabled: false" loading-screen="dotsColor: white; backgroundColor: black" background="transparent")
       a-assets
         //a-asset-item(id="helixA" src="/helix-simplified-A.glb")
         //a-asset-item(id="helixB" src="/helix-simplified-B.glb")
@@ -20,7 +20,7 @@
         horizontal-axis(rotation="0 90 0" :leftTxt="query.yAxis[0]" :rightTxt="query.yAxis[1]" :barColor="barColor")
         vertical-axis(:leftTxt="query.zAxis[0]" :rightTxt="query.zAxis[1]" :barColor="barColor")
         SpaceBoxes
-        a-sky(color='#000' animation="startEvents: changeSky; property: color; from: #ffffff; to: #000; dir:alternate;")
+        a-sky(color='#fff' animation="startEvents: changeSky; property: color; from: #000; to: #fff; dir:alternate;")
         a-entity#point(:position="animatedPointPositionString" data-aabb-collider-dynamic="true" aabb-collider="objects: .spaceBox;")
           a-entity(light="color: blue; intensity: 2.8; type: point; distance: 40; decay: 5" position="0 0 0")
           a-sphere(v-on:click="newRandomPoint" position="0 0 0" color="blue" radius="0.3")
@@ -36,8 +36,8 @@
       div.newPointInner(v-on:click="newRandomPoint") 【1】 Zufälliger Punkt
     div.newWords.btn(v-on:click="startNewWordPairs") Zufällige Achsen
     //div.hideHelix.btn(v-on:click="toggleHelixVisibility")
-    div.btn.openQuestionWindow(v-on:click="toggleQuestionWindowIsVisible" v-bind:class="{hidden: !questionWindowIsNOTVisible}") ②
-    div.wrapperChangePointQuestions(v-bind:class="{hidden: questionWindowIsNOTVisible}")
+    div.btn.openQuestionWindow(v-on:click="toggleQuestionWindowIsVisible" :class="{hidden: !questionWindowIsNOTVisible}") ②
+    div.wrapperChangePointQuestions(:class="{hidden: questionWindowIsNOTVisible}")
       div.btn.closeWindow(v-on:click="toggleQuestionWindowIsVisible")
         img(src="/CloseWindow-X.svg" alt="hide Window" height="20")
       p ② Du wachst auf – gestrandet in einer flimmernden Welt. Realitäten pulsieren ein und aus, überlagern sich, durchscheinend, weder überzeugend echt noch völlig virtuell. Um in diesem liminalen Raum zu überleben, besteht deine einzige Hoffnung darin, für dich selbst und für andere eine neue Bedeutung zu erschaffen. Wenn du in einem anderen Szenario aufwachen möchtest, kannst du hier den Punkt auch verschieben:
@@ -97,7 +97,7 @@ export default {
         yAxis: undefined,
         zAxis: undefined
       },
-      barColor: '#fea421', // Old Bar: '#ad6bd0' old Sky: #726042
+      barColor: '#000', // Old Bar: '#ad6bd0' old Sky: #726042 // fea421
       helixIsVisible: false,
       questionWindowIsNOTVisible: true,
       questions: [],

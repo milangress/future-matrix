@@ -18,7 +18,7 @@ import EndlessAxis from '@/components/EndlessAxis'
 const mainTextObject = {
   width: 10,
   wrapCount: '20',
-  color: 'white',
+  color: 'black',
   anchor: 'center',
   align: 'center',
   font: '/oracle-msdf.json',

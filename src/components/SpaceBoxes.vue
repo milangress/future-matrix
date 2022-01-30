@@ -28,14 +28,14 @@ export default {
           src: '#SpaceBoxTextur',
           opacity: 1
         })
-        box.setAttribute('color', 'white')
+        box.setAttribute('color', '#000')
       })
       box.addEventListener('hitend', function () {
         box.setAttribute('material', {
           src: false,
           opacity: 0
         })
-        box.setAttribute('color', '#000')
+        box.setAttribute('color', '#fff')
       })
     })
   },
