@@ -71,7 +71,7 @@ import CustomSlider from '@/components/CustomSlider'
 import { useQuery } from '@oarepo/vue-query-synchronizer'
 
 const sheetURL = 'https://sheets.googleapis.com/v4/spreadsheets/1LwSUWGNRwzb_5nKIQfBJTAt8Jq5C99Pu9bJSuWjdxio/values/Wortpaare!A1:F1001?majorDimension=COLUMNS&key=AIzaSyB2vKMMSjRWVW1CJQby6-ZyfyHqJOH5zZM'
-const sheetURLQuestions = 'https://spreadsheets.google.com/feeds/cells/1LwSUWGNRwzb_5nKIQfBJTAt8Jq5C99Pu9bJSuWjdxio/2/public/full?alt=json'
+const sheetURLQuestions = 'https://sheets.googleapis.com/v4/spreadsheets/1LwSUWGNRwzb_5nKIQfBJTAt8Jq5C99Pu9bJSuWjdxio/values/Fragen!A1:A1001?majorDimension=COLUMNS&key=AIzaSyB2vKMMSjRWVW1CJQby6-ZyfyHqJOH5zZM'
 
 export default {
   name: 'Home',
@@ -153,10 +153,8 @@ export default {
     loadSheetQuestions: async function () {
       try {
         const sheetData = await fetch(sheetURLQuestions).then(response => response.json())
-        const entries = sheetData.feed.entry
-        const questions = entries.filter(entry => entry.gs$cell.col === '1').map(entry => entry.content.$t)
-        this.questions = this.shuffleArray(questions)
-        console.log(`successfully loaded ${questions.length} Questions`)
+        this.questions = this.shuffleArray(sheetData.values[0])
+        console.log(`successfully loaded ${this.questions.length} Questions`)
       } catch (err) {
         console.error(err)
       }
