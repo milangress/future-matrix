@@ -32,9 +32,12 @@
       a-entity(camera="fov: 30" look-controls orbit-controls="target: 0 0 0; minDistance: 0.5; maxDistance: 180; initialPosition: 30 15 45: dampingFactor: 0.3")
       a-entity(cursor='rayOrigin: mouse' raycaster="objects: .clickable")
   .interface
-    div.btn.newPoint
-      div.newPointInner(v-on:click="newRandomPoint") 【1】 Zufälliger Punkt
-    div.newWords.btn(v-on:click="startNewWordPairs") Zufällige Achsen
+    //div.btn.newPoint
+    //  div.newPointInner(v-on:click="newRandomPoint") 【1】 Zufälliger Punkt
+    div.buttons-wrapper
+      img.btn(src="/NEW_POINT.png" v-on:click="newRandomPoint")
+      img.btn(src="/NEW-AXES.png" v-on:click="startNewWordPairs")
+      //btn(v-on:click="startNewWordPairs") Zufällige Achsen
     //div.hideHelix.btn(v-on:click="toggleHelixVisibility")
     div.btn.openQuestionWindow(v-on:click="toggleQuestionWindowIsVisible" :class="{hidden: !questionWindowIsNOTVisible}") ②
     div.wrapperChangePointQuestions(:class="{hidden: questionWindowIsNOTVisible}")
@@ -304,16 +307,23 @@ export default {
   display: flex
   justify-content: center
   align-items: center
-.newWords
-  grid-column: -3 / span 1
-  grid-row: -2 / -4
-  border-radius 1rem
-  background linear-gradient(-90deg, #ad6bd0 0%, rgba(0,0,0,0) 100%)
+.buttons-wrapper
+  position: absolute;
+  right 10%
+  bottom 5%
+  border-radius 50%
+  background-color rgb(0,0,0)
+  width: 30vw
+  height: 30vw
   writing-mode: vertical-lr
   display: flex
   justify-content: center
   align-items: center
   color: white
+  transform-origin: bottom right
+  transform: rotate(20deg) scale(0.4)
+  img
+    pointer-events all
 .hideHelix
   grid-column: -3 / span 1
   grid-row: 2 / 2
