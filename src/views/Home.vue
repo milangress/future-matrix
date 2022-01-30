@@ -22,7 +22,7 @@
         SpaceBoxes
         a-sky(color='#fff' animation="startEvents: changeSky; property: color; from: #000; to: #fff; dir:alternate;")
         a-entity#point(:position="animatedPointPositionString" data-aabb-collider-dynamic="true" aabb-collider="objects: .spaceBox;")
-          a-entity(light="color: blue; intensity: 2.8; type: point; distance: 40; decay: 5" position="0 0 0")
+          a-entity(light="color: white; intensity: 2.8; type: point; distance: 40; decay: 5" position="0 0 0")
           a-sphere(v-on:click="newRandomPoint" position="0 0 0" color="blue" radius="0.3")
         a-entity(v-if="helixIsVisible") <!--animation="easing:linear; property:rotation; from:0 0 0; to:0 360 0; dur: 17000; loop:true"-->
           a-gltf-model(:visible="helixIsVisible" src="#helixA")
@@ -276,6 +276,7 @@ export default {
   overflow scroll
   pointer-events all
   cursor default
+  color black
 
 @supports ((-webkit-backdrop-filter: blur(10px)) or (backdrop-filter: blur(10px)))
   .wrapperChangePointQuestions
@@ -312,7 +313,8 @@ export default {
   right 10%
   bottom 5%
   border-radius 50%
-  background-color rgb(0,0,0)
+  //background radial-gradient(#fff, #000);
+  background-color black
   width: 30vw
   height: 30vw
   writing-mode: vertical-lr
