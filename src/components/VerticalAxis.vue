@@ -1,12 +1,15 @@
 <template lang="pug">
 a-entity(:rotation="rotation")
-  a-box(position='0 0 0' depth="0.1" height="0.1" width="200" :color='barColor')
+  a-box(position='100 0 0' depth="0.1" height="0.1" width="200" :color='leftAxisColor')
   //a-cone(position="10 0 0" rotation="0 0 -90" radius-bottom="0.4" radius-top="0" :color='barColor')
   //a-cone(position="-10 0 0" rotation="0 0 90" radius-bottom="0.4" radius-top="0" :color='barColor')
-  a-entity(position="11.5 2 0" rotation="-45 0 0" v-bind:text="leftTextObject")
-  a-entity(position="-11 2 0" rotation="-45 0 0" v-bind:text="rightTextObject")
-  a-entity(position="11.5 2 0" rotation="135 0 0" v-bind:text="leftTextObject")
-  a-entity(position="-11 2 0" rotation="135 0 0" v-bind:text="rightTextObject")
+  a-entity(position="11.5 -0.5 0.5" rotation="-45 0 -90" v-bind:text="leftTextObject")
+  a-entity(position="11.5 0.5 -0.5" rotation="135 0 -90" v-bind:text="leftTextObject")
+
+  a-box(position='-100 0 0' depth="0.1" height="0.1" width="200" :color='rightAxisColor')
+
+  a-entity(position="-11 -0.5 0.5" rotation="-45 0 -90" v-bind:text="rightTextObject")
+  a-entity(position="-11 0.5 -0.5" rotation="135 0 -90" v-bind:text="rightTextObject")
   endless-axis(rotation='0 0 0' :startPosition="18" :barColor='barColor')
   endless-axis(rotation='0 180 0' :startPosition="18" :barColor='barColor')
   // a-text(position="2 2 2" rotation="0 0 0" v-bind:value="zAxis[0]")
@@ -16,10 +19,11 @@ a-entity(:rotation="rotation")
 import EndlessAxis from '@/components/EndlessAxis'
 
 const mainTextObject = {
-  width: 5,
-  wrapCount: '10',
+  width: 10,
+  wrapCount: '20',
   color: 'black',
-  anchor: 'center',
+  anchor: 'left',
+  baseline: 'top',
   align: 'left',
   font: '/oracle-msdf.json',
   // 'font-image': '/oracle-msdf.png',
@@ -27,7 +31,7 @@ const mainTextObject = {
 }
 
 export default {
-  name: 'HorizontalAxis',
+  name: 'VerticalAxis',
   components: { EndlessAxis },
   props: {
     leftTxt: String,
@@ -36,7 +40,8 @@ export default {
     rotation: {
       type: String,
       default: '0 90 90'
-    }
+    },
+    activeAxis: Object
   },
   data () {
     return {}
@@ -53,6 +58,12 @@ export default {
         ...mainTextObject,
         value: this.rightTxt
       }
+    },
+    leftAxisColor: function () {
+      return this.activeAxis.z === this.leftTxt ? '#01f' : '#000'
+    },
+    rightAxisColor: function () {
+      return this.activeAxis.z === this.rightTxt ? '#01f' : '#000'
     }
   }
 }

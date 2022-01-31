@@ -18,7 +18,7 @@
       a-entity#mainAxis(animation="startEvents: startRotating; easing:easeOutElastic; property:rotation; from:0 0 0; to:0 1080 0; dur: 1700; loop:false")
         horizontal-axis(:leftTxt="query.xAxis[0]" :rightTxt="query.xAxis[1]" :barColor="barColor")
         horizontal-axis(rotation="0 90 0" :leftTxt="query.yAxis[0]" :rightTxt="query.yAxis[1]" :barColor="barColor")
-        vertical-axis(:leftTxt="query.zAxis[0]" :rightTxt="query.zAxis[1]" :barColor="barColor")
+        vertical-axis(:leftTxt="query.zAxis[0]" :rightTxt="query.zAxis[1]" :barColor="barColor" :activeAxis="activeAxis")
         SpaceBoxes
         a-sky(color='#fff' animation="startEvents: changeSky; property: color; from: #000; to: #fff; dir:alternate;")
         a-entity#point(:position="animatedPointPositionString" data-aabb-collider-dynamic="true" aabb-collider="objects: .spaceBox;")
@@ -169,7 +169,7 @@ export default {
     },
     startNewWordPairs: function () {
       const that = this
-      const originalBarColor = this.barColor
+      const originalBarColor = '#000'
       const mainAxis = document.querySelector('#mainAxis')
       const sky = document.querySelector('a-sky')
       mainAxis.emit('startRotating')
@@ -230,6 +230,21 @@ export default {
     },
     animatedPointPositionString: function () {
       return `${this.animatedPointPosition.x} ${this.animatedPointPosition.y} ${this.animatedPointPosition.z}`
+    },
+    activeAxis: function () {
+      if (this.pointPosition.x === 0 || this.pointPosition.y === 0 || this.pointPosition.z === 0) {
+        return { x: 0, y: 0, z: 0 }
+      } else {
+        const x = this.pointPosition.x > 0 ? this.query.xAxis[0] : this.query.xAxis[1]
+        const y = this.pointPosition.z > 0 ? this.query.yAxis[1] : this.query.yAxis[0]
+        const z = this.pointPosition.y > 0 ? this.query.zAxis[0] : this.query.zAxis[1]
+        return {
+          x,
+          y,
+          z,
+          all: [x, y, z]
+        }
+      }
     }
   },
   watch: {

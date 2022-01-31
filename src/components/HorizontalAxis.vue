@@ -3,10 +3,10 @@ a-entity(:rotation="rotation")
   a-box(position='0 0 0' depth="0.1" height="0.1" width="200" :color='barColor')
   //a-cone(position="10 0 0" rotation="0 0 -90" radius-bottom="0.4" radius-top="0" :color='barColor')
   //a-cone(position="-10 0 0" rotation="0 0 90" radius-bottom="0.4" radius-top="0" :color='barColor')
-  a-entity(position="11 -2 0" v-bind:text="leftTextObject")
-  a-entity(position="-11 -2 0" v-bind:text="rightTextObject")
-  a-entity(position="11 -2 0" rotation='0 180 0' v-bind:text="leftBackTextObject")
-  a-entity(position="-11 -2 0" rotation='0 180 0' v-bind:text="rightBackTextObject")
+  a-entity(position="11 -1 0" v-bind:text="leftTextObject")
+  a-entity(position="-11 -1 0" v-bind:text="rightTextObject")
+  a-entity(position="11 -1 0" rotation='0 180 0' v-bind:text="leftBackTextObject")
+  a-entity(position="-11 -1 0" rotation='0 180 0' v-bind:text="rightBackTextObject")
   endless-axis(v-bind:startPosition="25" :barColor='barColor')
   endless-axis(rotation='0 180 0' v-bind:startPosition="25" :barColor='barColor')
 </template>
@@ -18,6 +18,7 @@ const mainTextObject = {
   width: 10,
   wrapCount: '20',
   color: 'black',
+  baseline: 'top',
   font: '/oracle-msdf.json',
   // 'font-image': '/oracle-msdf.png',
   negate: 'false'
