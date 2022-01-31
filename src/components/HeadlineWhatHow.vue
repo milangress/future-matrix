@@ -1,6 +1,7 @@
 <template lang="pug">
 header
   .headline
+    .headline-background
     h1 HSDF Matrix <br>
       span 💞A future storytelling Tool
   .whatHow
@@ -22,7 +23,8 @@ export default {
 header
   top 0
   padding 1rem
-  width 100%
+  width 100vw
+  height 100vh
   position: fixed;
   color: black
   transform-origin left top
@@ -36,6 +38,18 @@ header
       font-family 'Sneaky-Times'
       text-transform uppercase
       font-weight normal
+  .headline
+    position: relative
+    contain paint
+  .headline-background
+    width: 15rem
+    height: 4rem
+    background-color: #fff15f;
+    position: absolute
+    top: 10%
+    left: 1rem
+    z-index: -1;
+    filter: blur(20px)
 .whatHow
   margin-top 2rem
   font-family 'Sneaky-Times'

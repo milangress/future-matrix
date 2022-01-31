@@ -32,6 +32,8 @@
       a-entity(camera="fov: 30" look-controls orbit-controls="target: 0 0 0; minDistance: 0.5; maxDistance: 180; initialPosition: 30 15 45: dampingFactor: 0.3")
       a-entity(cursor='rayOrigin: mouse' raycaster="objects: .clickable")
   HeadlineWhatHow
+  .website www.HSDF.de
+
   .interface
     //div.btn.newPoint
     //  div.newPointInner(v-on:click="newRandomPoint") 【1】 Zufälliger Punkt
@@ -282,6 +284,13 @@ export default {
   grid-template-rows: 2rem repeat(10, minmax(0, 1fr)) 2rem
   //grid-auto-rows: fit-content(1em)
   pointer-events none
+.website
+  position: fixed;
+  bottom: 0;
+  left 51%
+  color black;
+  font-variant-ligatures: normal;
+  font-feature-settings: "calt" 1;
 .wrapperChangePointQuestions
   grid-column 2 / span 9
   grid-row span 7 / -2
