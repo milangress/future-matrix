@@ -1,8 +1,9 @@
 /*jshint -W109 */
 <template lang="pug">
 .home
+  StartPopUp
   .aframe-matrix
-    a-scene(embedded vr-mode-ui="enabled: false" loading-screen="dotsColor: white; backgroundColor: black" background="transparent")
+    a-scene(embedded vr-mode-ui="enabled: false" loading-screen="dotsColor: white; backgroundColor: white" background="transparent")
       a-assets
         //a-asset-item(id="helixA" src="/helix-simplified-A.glb")
         //a-asset-item(id="helixB" src="/helix-simplified-B.glb")
@@ -76,6 +77,7 @@ import gsap from 'gsap'
 import CustomSlider from '@/components/CustomSlider'
 import { useQuery } from '@oarepo/vue-query-synchronizer'
 import HeadlineWhatHow from '../components/HeadlineWhatHow'
+import StartPopUp from '../components/StartPopUp'
 
 const sheetURL = 'https://sheets.googleapis.com/v4/spreadsheets/1LwSUWGNRwzb_5nKIQfBJTAt8Jq5C99Pu9bJSuWjdxio/values/Wortpaare!A1:F1001?majorDimension=COLUMNS&key=AIzaSyB2vKMMSjRWVW1CJQby6-ZyfyHqJOH5zZM'
 const sheetURLQuestions = 'https://sheets.googleapis.com/v4/spreadsheets/1LwSUWGNRwzb_5nKIQfBJTAt8Jq5C99Pu9bJSuWjdxio/values/Fragen!A1:A1001?majorDimension=COLUMNS&key=AIzaSyB2vKMMSjRWVW1CJQby6-ZyfyHqJOH5zZM'
@@ -83,6 +85,7 @@ const sheetURLQuestions = 'https://sheets.googleapis.com/v4/spreadsheets/1LwSUWG
 export default {
   name: 'Home',
   components: {
+    StartPopUp,
     HeadlineWhatHow,
     HorizontalAxis,
     VerticalAxis,
@@ -273,6 +276,9 @@ export default {
 .aframe-matrix
   width: 100vw
   height: 100vh
+.a-loader-title
+  display none;
+  opacity: 0;
 .interface
   top 0
   width 100%
