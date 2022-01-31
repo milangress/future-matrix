@@ -16,6 +16,25 @@
   font-weight: normal;
   font-style: normal;
 
+@font-face
+  font-family: "ArmandGrotesk";
+  src: local("ArmandGrotesk"),
+    url('/fonts/ArmandGroteskTRIAL-Bold.otf') format("opentype");
+  font-weight: bold
+
+@font-face
+  font-family: "ArmandGrotesk";
+  src: local("ArmandGrotesk"),
+    url('/fonts/ArmandGroteskTRIAL-SemiLight.otf') format("opentype");
+  font-weight: normal;
+  font-stretch: 87.5% 112.5%;
+
+@font-face
+  font-family: "Sneaky-Times";
+  src: url('/fonts/Sneaky-Times.woff2') format('woff2'),
+    url('/fonts/Sneaky-Times.woff') format('woff');
+  font-weight: normal
+
 body
   margin 0
 #app
