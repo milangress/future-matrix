@@ -16,8 +16,8 @@
           material="shader: flat; side: double; depthTest: false; color: #000; transparent: true; opacity: 0"
           aabb-collider="objects: #point;")
       a-entity#mainAxis(animation="startEvents: startRotating; easing:easeOutElastic; property:rotation; from:0 0 0; to:0 1080 0; dur: 1700; loop:false")
-        horizontal-axis(:leftTxt="query.xAxis[0]" :rightTxt="query.xAxis[1]" :barColor="barColor")
-        horizontal-axis(rotation="0 90 0" :leftTxt="query.yAxis[0]" :rightTxt="query.yAxis[1]" :barColor="barColor")
+        horizontal-axis(:leftTxt="query.xAxis[0]" :rightTxt="query.xAxis[1]" :barColor="barColor" :activeAxis="activeAxis")
+        horizontal-axis(rotation="0 90 0" :leftTxt="query.yAxis[0]" :rightTxt="query.yAxis[1]" :barColor="barColor" :activeAxis="activeAxis")
         vertical-axis(:leftTxt="query.zAxis[0]" :rightTxt="query.zAxis[1]" :barColor="barColor" :activeAxis="activeAxis")
         SpaceBoxes
         a-sky(color='#fff' animation="startEvents: changeSky; property: color; from: #000; to: #fff; dir:alternate;")
@@ -232,18 +232,17 @@ export default {
       return `${this.animatedPointPosition.x} ${this.animatedPointPosition.y} ${this.animatedPointPosition.z}`
     },
     activeAxis: function () {
-      if (this.pointPosition.x === 0 || this.pointPosition.y === 0 || this.pointPosition.z === 0) {
-        return { x: 0, y: 0, z: 0 }
-      } else {
-        const x = this.pointPosition.x > 0 ? this.query.xAxis[0] : this.query.xAxis[1]
-        const y = this.pointPosition.z > 0 ? this.query.yAxis[1] : this.query.yAxis[0]
-        const z = this.pointPosition.y > 0 ? this.query.zAxis[0] : this.query.zAxis[1]
-        return {
-          x,
-          y,
-          z,
-          all: [x, y, z]
-        }
+      const x = this.pointPosition.x > 0 ? this.query.xAxis[0] : this.query.xAxis[1]
+      const y = this.pointPosition.z > 0 ? this.query.yAxis[1] : this.query.yAxis[0]
+      const z = this.pointPosition.y > 0 ? this.query.zAxis[0] : this.query.zAxis[1]
+      const exludeZero = {
+        x: this.pointPosition.x === 0 ? 0 : x,
+        y: this.pointPosition.y === 0 ? 0 : y,
+        z: this.pointPosition.z === 0 ? 0 : z
+      }
+      return {
+        ...exludeZero,
+        all: [exludeZero.x, exludeZero.y, exludeZero.z]
       }
     }
   },
