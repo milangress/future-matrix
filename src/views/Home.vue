@@ -356,7 +356,7 @@ export default {
   align-items: center
   color: white
   transform-origin: bottom right
-  transform: rotate(20deg) scale(0.35)
+  transform: rotate(20deg) scale(0.30)
   box-shadow: -5px -5px 15px #e37ff2, 0px 0px 15px #e37ff2, 5px 5px 20px rgba(255, 255, 255, 0.5) inset
   img
     pointer-events all
