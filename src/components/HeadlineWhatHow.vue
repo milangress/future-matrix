@@ -7,10 +7,10 @@ header
   .whatHow
     details
       summary What?
-      p Test
+      p Du wachst auf – gestrandet in einer flimmernden Welt. Realitäten pulsieren ein und aus, überlagern sich, durchscheinend, weder überzeugend echt noch völlig virtuell. Um in diesem liminalen Raum zu überleben, besteht deine einzige Hoffnung darin, für dich selbst und für andere eine neue Bedeutung zu erschaffen.
     details
       summary How?
-      p Test 2
+      p Placeholder
 </template>
 
 <script>
