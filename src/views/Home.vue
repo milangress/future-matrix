@@ -33,7 +33,7 @@
       a-entity(camera="fov: 30" look-controls orbit-controls="target: 0 0 0; minDistance: 0.5; maxDistance: 180; initialPosition: 30 15 45: dampingFactor: 0.3")
       a-entity(cursor='rayOrigin: mouse' raycaster="objects: .clickable")
   HeadlineWhatHow
-  .website www.HSDF.de
+  a.website(href="https://www.unreal.enterprises/") unreal.enterprises
 
   .interface
     //div.btn.newPoint
@@ -297,6 +297,7 @@ export default {
   color black;
   font-variant-ligatures: normal;
   font-feature-settings: "calt" 1;
+  text-decoration: none;
 .wrapperChangePointQuestions
   grid-column 2 / span 9
   grid-row span 7 / -2
