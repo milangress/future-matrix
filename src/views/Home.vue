@@ -44,7 +44,7 @@
       //btn(v-on:click="startNewWordPairs") Zufällige Achsen
     //div.hideHelix.btn(v-on:click="toggleHelixVisibility")
     QuestionBox(:questions="questions")
-    div.btn.openQuestionWindow(v-on:click="toggleQuestionWindowIsVisible" :class="{hidden: !questionWindowIsNOTVisible}") ②
+    //div.btn.openQuestionWindow(v-on:click="toggleQuestionWindowIsVisible" :class="{hidden: !questionWindowIsNOTVisible}") ②
     div.wrapperChangePointQuestions(:class="{hidden: questionWindowIsNOTVisible}")
       div.btn.closeWindow(v-on:click="toggleQuestionWindowIsVisible")
         img(src="/CloseWindow-X.svg" alt="hide Window" height="20")
