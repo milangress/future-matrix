@@ -30,7 +30,7 @@
           a-gltf-model(:visible="helixIsVisible" src="#helixB")
       a-entity(light="type: ambient; color: #BBB")
       a-entity(light="type: directional; color: #FFF; intensity: 0.6" position="-0.5 1 1")
-      a-entity(camera="fov: 30" look-controls orbit-controls="target: 0 0 0; minDistance: 0.5; maxDistance: 180; initialPosition: 30 15 45: dampingFactor: 0.3")
+      a-entity(camera="fov: 30" look-controls orbit-controls="target: 0 0 0; minDistance: 0.5; maxDistance: 180; initialPosition: 25 15 40: dampingFactor: 0.3")
       a-entity(cursor='rayOrigin: mouse' raycaster="objects: .clickable")
   HeadlineWhatHow
   a.website(href="https://www.unreal.enterprises/") unreal.enterprises
