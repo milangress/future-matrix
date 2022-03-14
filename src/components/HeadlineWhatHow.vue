@@ -40,7 +40,7 @@ header
       font-weight normal
   .headline
     position: relative
-    contain paint
+    //contain paint
   .headline-background
     width: 15rem
     height: 4rem
