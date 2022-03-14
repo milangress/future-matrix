@@ -58,6 +58,7 @@ export default {
   border-radius 2rem
   font-size 1.2rem
   pointer-events auto
+  filter: var(--grain)
 .newQuestion
   all: unset
   position relative
