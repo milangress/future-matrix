@@ -277,6 +277,8 @@ export default {
 .a-loader-title
   display none;
   opacity: 0;
+canvas
+  //filter: var(--grain)
 .interface
   top 0
   width 100%
@@ -356,6 +358,7 @@ export default {
   transform-origin: bottom right
   transform: rotate(20deg) scale(0.30)
   box-shadow: -5px -5px 15px #e37ff2, 0px 0px 15px #e37ff2, 5px 5px 20px rgba(255, 255, 255, 0.5) inset
+  filter var(--grain-3)
   img
     pointer-events all
     max-height 160px
