@@ -30,8 +30,9 @@ header
   transform-origin left top
   transform: scaleX(0.8)
   pointer-events none
+  filter: var(--grain)
   h1
-    font-family 'ArmandGrotesk'
+    font-family: "SissiDisplay", serif;
     font-weight: bold
     margin 0
     span
