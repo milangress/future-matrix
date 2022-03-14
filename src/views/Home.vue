@@ -43,6 +43,7 @@
       img.btn(src="/NEW-AXES.png" v-on:click="startNewWordPairs")
       //btn(v-on:click="startNewWordPairs") Zufällige Achsen
     //div.hideHelix.btn(v-on:click="toggleHelixVisibility")
+    QuestionBox(:questions="questions")
     div.btn.openQuestionWindow(v-on:click="toggleQuestionWindowIsVisible" :class="{hidden: !questionWindowIsNOTVisible}") ②
     div.wrapperChangePointQuestions(:class="{hidden: questionWindowIsNOTVisible}")
       div.btn.closeWindow(v-on:click="toggleQuestionWindowIsVisible")
@@ -78,6 +79,7 @@ import CustomSlider from '@/components/CustomSlider'
 import { useQuery } from '@oarepo/vue-query-synchronizer'
 import HeadlineWhatHow from '../components/HeadlineWhatHow'
 import StartPopUp from '../components/StartPopUp'
+import QuestionBox from '@/components/QuestionBox'
 
 const sheetURL = 'https://sheets.googleapis.com/v4/spreadsheets/1LwSUWGNRwzb_5nKIQfBJTAt8Jq5C99Pu9bJSuWjdxio/values/Wortpaare!A1:F1001?majorDimension=COLUMNS&key=AIzaSyB2vKMMSjRWVW1CJQby6-ZyfyHqJOH5zZM'
 const sheetURLQuestions = 'https://sheets.googleapis.com/v4/spreadsheets/1LwSUWGNRwzb_5nKIQfBJTAt8Jq5C99Pu9bJSuWjdxio/values/Fragen!A1:A1001?majorDimension=COLUMNS&key=AIzaSyB2vKMMSjRWVW1CJQby6-ZyfyHqJOH5zZM'
@@ -85,6 +87,7 @@ const sheetURLQuestions = 'https://sheets.googleapis.com/v4/spreadsheets/1LwSUWG
 export default {
   name: 'Home',
   components: {
+    QuestionBox,
     StartPopUp,
     HeadlineWhatHow,
     HorizontalAxis,
@@ -169,11 +172,6 @@ export default {
       } catch (err) {
         console.error(err)
       }
-    },
-    newQuestion: function () {
-      const newQuestion = this.shuffleArray(this.questions)
-      console.log('newQuestion')
-      this.questions = newQuestion
     },
     startNewWordPairs: function () {
       const that = this
