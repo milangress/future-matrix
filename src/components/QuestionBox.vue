@@ -65,13 +65,14 @@ export default {
   border-radius 2rem
   font-size 1.2rem
   pointer-events auto
-  filter: var(--grain)
+  outline: 1px solid white
 .newQuestion
   all: unset
   text-transform uppercase
   position relative
   cursor: pointer
   pointer-events auto
+  user-select: none
   background white
   color black
   padding-block  0.2em
@@ -88,5 +89,7 @@ export default {
   &:hover
     filter: var(--grain-2)
     animation: wiggle-me .2s cubic-bezier(.1,.6,.4,1) infinite
+  &:focus-visible
+    outline 5px solid blue
 
 </style>
