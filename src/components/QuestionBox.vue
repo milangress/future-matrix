@@ -1,5 +1,5 @@
 <template lang="pug">
-.questionBox-Wrapper
+.questionBox-Wrapper(:style="wrapperStyle")
   button.newQuestion(@click="newQuestion") New Question
   .question {{questionArray[0]}}
 
@@ -16,12 +16,19 @@ export default {
   },
   data () {
     return {
-      questionArray: ['Loading…']
+      questionArray: ['']
     }
   },
   watch: {
     questions: function () {
-      this.questionArray = this.shuffleArray(this.questions)
+      // this.questionArray = this.shuffleArray(this.questions)
+    }
+  },
+  computed: {
+    wrapperStyle () {
+      return {
+        width: this.questionArray.length <= 1 ? 'auto' : '40ch'
+      }
     }
   },
   methods: {
@@ -61,6 +68,7 @@ export default {
   filter: var(--grain)
 .newQuestion
   all: unset
+  text-transform uppercase
   position relative
   cursor: pointer
   pointer-events auto
@@ -78,6 +86,7 @@ export default {
     border-radius 1em
     transform translateY(90%)
   &:hover
+    filter: var(--grain-2)
     animation: wiggle-me .2s cubic-bezier(.1,.6,.4,1) infinite
 
 </style>
