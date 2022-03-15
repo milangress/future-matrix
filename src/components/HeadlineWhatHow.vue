@@ -10,12 +10,31 @@ header
       p.fold-out Du wachst auf – gestrandet in einer flimmernden Welt. Realitäten pulsieren ein und aus, überlagern sich, durchscheinend, weder überzeugend echt noch völlig virtuell. Um in diesem liminalen Raum zu überleben, besteht deine einzige Hoffnung darin, für dich selbst und für andere eine neue Bedeutung zu erschaffen.
     details
       summary How?
-      p.fold-out Placeholder
+      p.fold-out
+        custom-slider.slider(min="-9" max="9" step="1" v-model:value="pointPosition.x" :leftText="xAxis[1]" :rightText="xAxis[0]")
+        custom-slider.slider(min="-9" max="9" step="1" v-model:value="pointPosition.z" :leftText="yAxis[0]" :rightText="yAxis[1]")
+        custom-slider.slider(min="-9" max="9" step="1" v-model:value="pointPosition.y" :leftText="zAxis[1]" :rightText="zAxis[0]")
 </template>
 
 <script>
+import CustomSlider from '@/components/CustomSlider'
 export default {
-  name: 'HeadlineWhatHow'
+  name: 'HeadlineWhatHow',
+  components: { CustomSlider },
+  props: {
+    pointPosition: {
+      type: Object
+    },
+    xAxis: {
+      type: Array
+    },
+    yAxis: {
+      type: Array
+    },
+    zAxis: {
+      type: Array
+    }
+  }
 }
 </script>
 
@@ -66,6 +85,7 @@ header
     z-index: 5
     margin 0
     text-transform none
+    pointer-events auto
     //text-shadow 0 0 2px #fff, 0 0 2px #fff, 0 0 2px #fff, 0 0 3px #fff, 0 0 3px #fff, 0 0 4px #fff, 0 0 4px #fff
     position relative
   .fold-out:before

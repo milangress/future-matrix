@@ -32,7 +32,12 @@
       a-entity(light="type: directional; color: #FFF; intensity: 0.6" position="-0.5 1 1")
       a-entity(camera="fov: 30" look-controls orbit-controls="target: 0 0 0; minDistance: 0.5; maxDistance: 180; initialPosition: 25 15 40: dampingFactor: 0.3")
       a-entity(cursor='rayOrigin: mouse' raycaster="objects: .clickable")
-  HeadlineWhatHow
+  HeadlineWhatHow(
+    :point-position="pointPosition"
+    :x-axis="query.xAxis"
+    :y-axis="query.yAxis"
+    :z-axis="query.zAxis"
+    )
   a.website(href="https://www.unreal.enterprises/") unreal.enterprises
 
   .interface

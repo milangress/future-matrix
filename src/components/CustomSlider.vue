@@ -68,10 +68,11 @@ export default {
   display: flex
   align-items: center
   justify-content: center
+  padding-block-end: 0.2em
 
 .sliderWrapper
   input
-    width: 50%
+    width: 40%
 
   span
     width: 25%
@@ -85,12 +86,12 @@ export default {
 
 @media (max-width: 500px)
   .sliderWrapper input
-    width: 40%
+    width: 30%
   .sliderWrapper span
     font-size: 0.6em
 
 .textIsActive
-  color: rgb(173, 107, 208)
+  color: rgb(0, 35, 255)
   // text-shadow: 1px 1px 2px rgb(0, 0, 0), 0px 0px 15px rgb(255, 255, 255)
 
 // Styling Cross-Browser Compatible Range Inputs with Sass
@@ -99,20 +100,20 @@ export default {
 // Version 1.5.2
 // MIT License
 
-$track-color: #ffffff !default
-$thumb-color: #ffffff !default
+$track-color: rgba(0, 0, 0, 1) !default
+$thumb-color: #0023ff !default
 
-$thumb-radius: 0px !default
+$thumb-radius: 50% !default
 $thumb-height: 22px !default
-$thumb-width: 8px !default
+$thumb-width: 25px !default
 $thumb-shadow-size: 0px !default
 $thumb-shadow-blur: 4px !default
-$thumb-shadow-color: rgba(0, 0, 0, .2) !default
+$thumb-shadow-color: rgba(0, 0, 0, 0.99) !default
 $thumb-border-width: 0px !default
-$thumb-border-color: #eceff1 !default
+$thumb-border-color: #0023ff !default
 
 $track-width: 100% !default
-$track-height: 2px !default
+$track-height: 1px !default
 $track-shadow-size: 0px !default
 $track-shadow-blur: 0px !default
 $track-shadow-color: rgba(0, 0, 0, .2) !default
