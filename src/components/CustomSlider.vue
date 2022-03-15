@@ -108,12 +108,12 @@ $thumb-height: 22px !default
 $thumb-width: 25px !default
 $thumb-shadow-size: 0px !default
 $thumb-shadow-blur: 4px !default
-$thumb-shadow-color: rgba(0, 0, 0, 0.99) !default
+$thumb-shadow-color: rgb(241, 244, 245) !default
 $thumb-border-width: 0px !default
-$thumb-border-color: #0023ff !default
+$thumb-border-color: rgba(0, 0, 0, 0.99) !default
 
 $track-width: 100% !default
-$track-height: 1px !default
+$track-height: 2px !default
 $track-shadow-size: 0px !default
 $track-shadow-blur: 0px !default
 $track-shadow-color: rgba(0, 0, 0, .2) !default
