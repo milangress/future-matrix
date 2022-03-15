@@ -343,7 +343,7 @@ canvas
   align-items: center
 .buttons-wrapper
   position: absolute;
-  right 10%
+  right 5%
   bottom 5%
   border-radius 50%
   //background radial-gradient(#fff, #000);
@@ -356,7 +356,7 @@ canvas
   align-items: center
   color: white
   transform-origin: bottom right
-  transform: rotate(20deg) scale(0.30)
+  transform: scale(0.30)
   box-shadow: -5px -5px 15px #e37ff2, 0px 0px 15px #e37ff2, 5px 5px 20px rgba(255, 255, 255, 0.5) inset
   filter var(--grain-3)
   img
