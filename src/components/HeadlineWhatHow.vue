@@ -10,6 +10,9 @@ header
       p.fold-out Du wachst auf – gestrandet in einer flimmernden Welt. Realitäten pulsieren ein und aus, überlagern sich, durchscheinend, weder überzeugend echt noch völlig virtuell. Um in diesem liminalen Raum zu überleben, besteht deine einzige Hoffnung darin, für dich selbst und für andere eine neue Bedeutung zu erschaffen.
     details
       summary How?
+      p.fold-out Die 🞵HSDF-Matrix,.-' ̄ist ein non-lineares Assoziations- & Storytelling- Werkzeug für die Entwicklung fiktiver Szenarien. Die Matrix, mapped verschiedene gesellschaftliche Tendenzen in einen dreidimensionalen Raum, in dem Szenarien und fiktionale Plot-Bausteine simultan & überlappend an einem beweglich unbegrenzten fiktiven Nonplace existieren können. Die Achsen, Quadranten sowie die Impuls-Fragen des Tools sind partizipativ editierbar über eine Google Sheets Liste. Damit entsteht die Möglichkeit das Tool im Rahmen eines Workshops innerhalb von kollaborativen Gestaltungsprozessen zu nutzen.
+    details
+      summary where?
       p.fold-out
         custom-slider.slider(min="-9" max="9" step="1" v-model:value="pointPosition.x" :leftText="xAxis[1]" :rightText="xAxis[0]")
         custom-slider.slider(min="-9" max="9" step="1" v-model:value="pointPosition.z" :leftText="yAxis[0]" :rightText="yAxis[1]")
